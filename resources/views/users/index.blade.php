@@ -51,14 +51,15 @@
                             <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Name</th><th>Email</th><th>Created At</th><th>Updated</th> </tr>
+                                        <th>ID</th><th>Name</th><th>Email</th><th>Created At</th><th>Updated</th></tr>
                                 </thead>
 
                                 <tbody>
                                   @foreach ($users as $user)
                                       <tr>
                                           <td>{{ $user->id }}</td>
-                                          <td>{{ $user->name }}</td>
+                                          <td><a href="{!! action('UserController@show', $user->id) !!}">{{ $user->name }} </a>
+                                          </td>
                                           <td>{{ $user->email }}</td>
                                           <td>{{ $user->created_at }}</td>
                                           <td>{{ $user->updated_at }}</td>

@@ -10,13 +10,14 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+//Landing page
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Authorization and registration
 Auth::routes();
 
+//Home Controller
 Route::get('/home', 'HomeController@index');
-Route::get('/showUserForm', 'UserController@showForm');
-Route::resource('users', 'UserController');
+//user Routes
+Route::resource('users', 'UserController', ['only' => ['index', 'show', 'create', 'edit']]);

@@ -16,7 +16,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />    <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon" />    <!-- Favicon -->
         <link rel="apple-touch-icon-precomposed" href="assets/images/apple-touch-icon-57-precomposed.png">	<!-- For iPhone -->
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/apple-touch-icon-114-precomposed.png">    <!-- For iPhone 4 Retina display -->
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/apple-touch-icon-72-precomposed.png">    <!-- For iPad -->
@@ -26,12 +26,12 @@
 
 
         <!-- CORE CSS FRAMEWORK - START -->
-        <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+        <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css ') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap-theme.min.css ') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/fonts/font-awesome/css/font-awesome.css ') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/animate.min.css ') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css ') }}" rel="stylesheet" type="text/css"/>
         <!-- CORE CSS FRAMEWORK - END -->
 
         <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
@@ -40,8 +40,8 @@
 
 
         <!-- CORE CSS TEMPLATE - START -->
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/style.css ') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/responsive.css ') }}" rel="stylesheet" type="text/css"/>
         <!-- CORE CSS TEMPLATE - END -->
         <!-- Scripts -->
         <script>
@@ -57,8 +57,11 @@
     <body class=" ">
       <!-- START TOPBAR -->
         <div class='page-topbar '>
-            <div class='logo-area'>
 
+            <div>
+                    <a href="{{ url('/home') }}">
+                        <span class='logo-area'></span>
+                    </a>
             </div>
             <div class='quick-area'>
                 <div class='pull-left'>
@@ -81,7 +84,7 @@
                                         <li class="unread status-available">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-1.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-1.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -98,7 +101,7 @@
                                         <li class=" status-away">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-2.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-2.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -115,7 +118,7 @@
                                         <li class=" status-busy">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-3.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-3.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -132,7 +135,7 @@
                                         <li class=" status-offline">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-4.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-4.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -149,7 +152,7 @@
                                         <li class=" status-offline">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-5.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-5.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -166,7 +169,7 @@
                                         <li class=" status-available">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-1.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-1.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -183,7 +186,7 @@
                                         <li class=" status-busy">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-2.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-2.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -200,7 +203,7 @@
                                         <li class=" status-away">
                                             <a href="javascript:;">
                                                 <div class="user-img">
-                                                    <img src="data/profile/avatar-3.png" alt="user-image" class="img-circle img-inline">
+                                                    <img src="{{ asset('data/profile/avatar-3.png ') }}" alt="user-image" class="img-circle img-inline">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -367,7 +370,7 @@
                       @else
                         <li class="profile">
                             <a href="#" data-toggle="dropdown" class="toggle">
-                                <img src="data/profile/profile-crm.jpg" alt="user-image" class="img-circle img-inline">
+                                <img src="{{ asset('data/profile/profile-crm.jpg ') }}" alt="user-image" class="img-circle img-inline">
                                 <span>{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></span>
                             </a>
                             <ul class="dropdown-menu profile animated fadeIn">
@@ -378,7 +381,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#profile">
+                                    <a href="{{ action('UserController@show', Auth::user()->id) }}">
                                         <i class="fa fa-user"></i>
                                         Profile
                                     </a>
@@ -429,15 +432,15 @@
                     <div class="profile-info row">
 
                         <div class="profile-image col-md-4 col-sm-4 col-xs-4">
-                            <a href="ui-profile.html">
-                                <img src="data/profile/profile-crm.jpg" class="img-responsive img-circle">
+                            <a href="{{ action('UserController@show', Auth::user()->id) }}">
+                                <img src="{{ asset('data/profile/profile-crm.jpg ') }}" class="img-responsive img-circle">
                             </a>
                         </div>
 
                         <div class="profile-details col-md-8 col-sm-8 col-xs-8">
 
                             <h3>
-                                <a href="ui-profile.html">John Wilson</a>
+                                <a href="{{ action('UserController@show', Auth::user()->id) }}">{{ Auth::user()->name }}</a>
 
                                 <!-- Available statuses: online, idle, busy, away and offline -->
                                 <span class="profile-status online"></span>
@@ -646,13 +649,13 @@
                             </a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a class="" href="{{ url('/users') }}" >All Users</a>
+                                    <a class="" href="{{ url('users') }}" >All Users</a>
                                 </li>
                                 <li>
-                                    <a class="" href="{{ url('/showUserForm') }}" >Add User</a>
+                                    <a class="" href="{{ url('users/create') }}" >Add User</a>
                                 </li>
                                 <li>
-                                    <a class="" href="crm-user-edit.html" >Edit User</a>
+                                    <a class="" href="{{ url('users/edit') }}" >Edit User</a>
                                 </li>
                             </ul>
                         </li>
@@ -767,7 +770,7 @@
 
                         <li class="user-row" id='chat_user_1' data-user-id='1'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-1.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-1.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Clarine Vassar</a></h4>
@@ -779,7 +782,7 @@
                         </li>
                         <li class="user-row" id='chat_user_2' data-user-id='2'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-2.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-2.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Brooks Latshaw</a></h4>
@@ -791,7 +794,7 @@
                         </li>
                         <li class="user-row" id='chat_user_3' data-user-id='3'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-3.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-3.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Clementina Brodeur</a></h4>
@@ -810,7 +813,7 @@
 
                         <li class="user-row" id='chat_user_4' data-user-id='4'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-4.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-4.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Carri Busey</a></h4>
@@ -822,7 +825,7 @@
                         </li>
                         <li class="user-row" id='chat_user_5' data-user-id='5'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-5.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-5.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Melissa Dock</a></h4>
@@ -834,7 +837,7 @@
                         </li>
                         <li class="user-row" id='chat_user_6' data-user-id='6'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-1.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-1.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Verdell Rea</a></h4>
@@ -846,7 +849,7 @@
                         </li>
                         <li class="user-row" id='chat_user_7' data-user-id='7'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-2.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-2.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Linette Lheureux</a></h4>
@@ -858,7 +861,7 @@
                         </li>
                         <li class="user-row" id='chat_user_8' data-user-id='8'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-3.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-3.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Araceli Boatright</a></h4>
@@ -870,7 +873,7 @@
                         </li>
                         <li class="user-row" id='chat_user_9' data-user-id='9'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-4.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-4.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Clay Peskin</a></h4>
@@ -882,7 +885,7 @@
                         </li>
                         <li class="user-row" id='chat_user_10' data-user-id='10'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-5.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-5.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Loni Tindall</a></h4>
@@ -894,7 +897,7 @@
                         </li>
                         <li class="user-row" id='chat_user_11' data-user-id='11'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-1.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-1.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Tanisha Kimbro</a></h4>
@@ -906,7 +909,7 @@
                         </li>
                         <li class="user-row" id='chat_user_12' data-user-id='12'>
                             <div class="user-img">
-                                <a href="#"><img src="data/profile/avatar-2.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('data/profile/avatar-2.png ') }}" alt=""></a>
                             </div>
                             <div class="user-info">
                                 <h4><a href="#">Jovita Tisdale</a></h4>
@@ -932,12 +935,12 @@
 
 
         <!-- CORE JS FRAMEWORK - START -->
-        <script src="assets/js/jquery-1.11.2.min.js" type="text/javascript"></script>
-        <script src="assets/js/jquery.easing.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/viewport/viewportchecker.js" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/jquery-1.11.2.min.js ') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/jquery.easing.min.js ') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js ') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/pace/pace.min.js ') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js ') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/viewport/viewportchecker.js ') }}" type="text/javascript"></script>
         <!-- CORE JS FRAMEWORK - END -->
 
 
@@ -947,12 +950,12 @@
 
 
         <!-- CORE TEMPLATE JS - START -->
-        <script src="assets/js/scripts.js" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/scripts.js ') }}" type="text/javascript"></script>
         <!-- END CORE TEMPLATE JS - END -->
 
         <!-- Sidebar Graph - START -->
-        <script src="assets/plugins/sparkline-chart/jquery.sparkline.min.js" type="text/javascript"></script>
-        <script src="assets/js/chart-sparkline.js" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/sparkline-chart/jquery.sparkline.min.js ') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/js/chart-sparkline.js ') }}" type="text/javascript"></script>
         <!-- Sidebar Graph - END -->
 
 

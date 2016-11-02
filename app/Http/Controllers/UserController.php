@@ -12,6 +12,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+     {
+       //ensuring that the user is logged in
+         $this->middleware('auth');
+     }
     public function index()
     {
           // $users = User::with('roles')->get();
@@ -24,14 +29,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showForm()
-    {
-        //
-        return view('users.form');
-    }
     public function create()
     {
         //
+        return view('users.form');
     }
 
     /**
@@ -53,7 +54,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', $id)->firstOrFail();
+
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -64,7 +67,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+      $user = User::where('id', $id)->firstOrFail();
+
+      return view('users.edit')->with('user', $user);
     }
 
     /**
