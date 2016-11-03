@@ -20,4 +20,6 @@ Auth::routes();
 //Home Controller
 Route::get('/home', 'HomeController@index');
 //user Routes
-Route::resource('users', 'UserController', ['only' => ['index', 'show', 'create', 'edit']]);
+Route::post('/users/createUser', 'UserController@createUser');
+Route::resource('users', 'UserController');
+//Route::resource('users', 'UserController', ['only' => ['index', 'show', 'create', 'edit' , 'update']]);

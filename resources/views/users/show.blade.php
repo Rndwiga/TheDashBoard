@@ -36,7 +36,7 @@
                             <div class="content-body">    <div class="row">
                                     <div class="col-md-4 col-sm-5 col-xs-12">
                                         <div class="uprofile-image">
-                                            <img src="{{ asset('data/profile/user.png ') }}" class="img-responsive">
+                                            <img src="{{ asset($user->userProfile->profile_picture)}}" class="img-responsive">
                                         </div>
                                         <div class="uprofile-name">
                                             <h3>

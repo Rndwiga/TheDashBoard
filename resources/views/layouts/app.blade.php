@@ -370,7 +370,7 @@
                       @else
                         <li class="profile">
                             <a href="#" data-toggle="dropdown" class="toggle">
-                                <img src="{{ asset('data/profile/profile-crm.jpg ') }}" alt="user-image" class="img-circle img-inline">
+                                <img src="{{ asset($user->userProfile->profile_picture)}}" alt="user-image" class="img-circle img-inline">
                                 <span>{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></span>
                             </a>
                             <ul class="dropdown-menu profile animated fadeIn">
@@ -433,7 +433,7 @@
 
                         <div class="profile-image col-md-4 col-sm-4 col-xs-4">
                             <a href="{{ action('UserController@show', Auth::user()->id) }}">
-                                <img src="{{ asset('data/profile/profile-crm.jpg ') }}" class="img-responsive img-circle">
+                                <img src="{{ asset($user->userProfile->profile_picture)}}" class="img-responsive img-circle">
                             </a>
                         </div>
 
@@ -653,9 +653,6 @@
                                 </li>
                                 <li>
                                     <a class="" href="{{ url('users/create') }}" >Add User</a>
-                                </li>
-                                <li>
-                                    <a class="" href="{{ url('users/edit') }}" >Edit User</a>
                                 </li>
                             </ul>
                         </li>

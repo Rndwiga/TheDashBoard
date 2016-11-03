@@ -26,6 +26,19 @@
                             @endif
                     </p>
                     <p>
+                        <label for="user_login">Gender<br />
+                          <select class="input" id="user_login" name="gender">
+                              <option></option>
+                              <option value="Male">Male</option>
+                              <option value="Female" >Female</option>
+                          </select>
+                            @if ($errors->has('gender'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('gender') }}</strong>
+                                </span>
+                            @endif
+                    </p>
+                    <p>
                         <label for="user_login">Username<br />
                             <input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
                     </p>
