@@ -85,10 +85,18 @@ class UserController extends Controller
     {
       //  $user = User::find($id)->userProfile;
         $user = User::with(['userProfile'])->find($id);
+          $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
+            if($isProfileSet == NULL)
+            {
+                $user = User::find(Auth::user()->id); //fetching basic user info
+                $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
+                return view('users.show', compact('user'));
+            }else {
+                return view('users.show', compact('user'));
+            }
 
-      //  return $user;
 
-        return view('users.show', compact('user'));
+      //  return view('users.show', compact('user'));
     }
 
     /**
@@ -102,8 +110,26 @@ class UserController extends Controller
       //$user = User::where('id', $id)->firstOrFail();
     //  $user = User::find($id)->userProfile;
     $user = User::with(['userProfile'])->find($id);
+    $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
+      if($isProfileSet == NULL)
+      {
+          $user = User::find(Auth::user()->id); //fetching basic user info
+          $user->userProfile = (object)array(
+                    'profile_picture' => asset('data/profile/avatar-2.png '),
+                    'facebook' => '',
+                    'twitter' => '',
+                    'gplus' => '',
+                    'github' => '',
+                    'mobile' => '',
+                    'address' => '',
+                    'dob' => '',
+                    'bio' => '',
 
-      return view('users.edit')->with('user', $user);
+                  ); //setting default user profile
+          return view('users.edit')->with('user', $user);
+      }else {
+          return view('users.edit')->with('user', $user);
+      }
     }
 
     /**
@@ -154,8 +180,65 @@ class UserController extends Controller
                             return redirect('/users/'. $user->user_id .'/edit');
                           }
 
-        } else {
-            return $request;
+        }elseif ($request->get('section') == "socialInfo")
+          {
+                if((UserProfile::where('user_id', $request->get('id'))->first()) == NULL)
+                {
+                            $this->validate($request, [
+                            'facebook' => 'max:255',
+                            'twitter' => 'max:255',
+                            'gplus' => 'max:255',
+                            'github' => 'max:255',
+                        ]);
+                      $user = new UserProfile(array(
+                          'facebook' => $request->get('facebook'),
+                          'twitter' => $request->get('twitter'),
+                          'gplus' => $request->get('gplus'),
+                          'github' => $request->get('github'),
+                          'user_id' => $request->get('id'),
+                      ));
+                      $user->save();
+                  return redirect('/users/'. $request->get('id') .'/edit');
+                }else {
+                      $user = UserProfile::where('user_id', $request->get('id'))->first();
+                      $user->facebook = $request->get('facebook');
+                      $user->twitter = $request->get('twitter');
+                      $user->gplus = $request->get('gplus');
+                      $user->github = $request->get('github');
+                      $user->save();
+
+                  return redirect('/users/'. $request->get('id') .'/edit');
+                }
+          }
+         else {
+           if((UserProfile::where('user_id', $request->get('id'))->first()) == NULL)
+           {
+                       $this->validate($request, [
+                       'mobile' => 'max:255',
+                       'address' => 'max:255',
+                       'dob' => 'max:255',
+                       'bio' => 'max:255',
+                   ]);
+                 $user = new UserProfile(array(
+                     'mobile' => $request->get('mobile'),
+                     'address' => $request->get('address'),
+                     'dob' => $request->get('gplus'),
+                     'bio' => $request->get('bio'),
+                     'user_id' => $request->get('id'),
+                 ));
+                 $user->save();
+             return redirect('/users/'. $request->get('id') .'/edit');
+           }else {
+                 $user = UserProfile::where('user_id', $request->get('id'))->first();
+                 $user->mobile = $request->get('mobile');
+                 $user->address = $request->get('address');
+                 $user->dob = date($request->get('dob'));
+                 $user->bio = $request->get('bio');
+                 //return $user;
+                 $user->save();
+
+             return redirect('/users/'. $user->user_id .'/edit');
+           }
         }
 
 

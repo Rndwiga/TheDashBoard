@@ -138,7 +138,7 @@
                                                 <label class="form-label" for="field-2">Phone</label>
                                                 <span class="desc">e.g. "(534) 253-5353"</span>
                                                 <div class="controls">
-                                                    <input type="text" value="(123) 456-7878" class="form-control" id="field-2" data-mask="phone"  placeholder="(999) 999-9999">
+                                                    <input type="text" name="mobile" value="{{$user->userProfile->mobile}}" class="form-control" id="field-2" data-mask="phone"  placeholder="(999) 999-9999">
                                                 </div>
                                             </div>
 
@@ -146,7 +146,7 @@
                                                 <label class="form-label" for="field-6">Address</label>
                                                 <span class="desc"></span>
                                                 <div class="controls">
-                                                    <textarea class="form-control autogrow" cols="5" id="field-6">A-2 Canon Appt, Near Ring Road, City Streets, NY 12435</textarea>
+                                                    <textarea class="form-control autogrow" name="address" cols="5" id="field-6">{{$user->userProfile->address}}</textarea>
                                                 </div>
                                             </div>
 
@@ -154,17 +154,15 @@
                                                 <label class="form-label" for="field-5">Date of Birth</label>
                                                 <span class="desc">e.g. "04/03/2015"</span>
                                                 <div class="controls">
-                                                    <input type="text" name="dob" value="05/02/1985" class="form-control datepicker" data-format="mm/dd/yyyy" value="">
+                                                    <input type="text" name="dob" value="{{$user->userProfile->dob}}" class="form-control datepicker" data-format="mm/dd/yyyy" value="">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="form-label" for="field-6">Brief</label>
-                                                <span class="desc">e.g. "Enter any size of text description here"</span>
+                                                <span class="desc">e.g. "Short summary about yourself"</span>
                                                 <div class="controls">
-                                                    <textarea class="form-control autogrow" cols="5" id="field-6" name="bio">
-                                                      Well known for deep knowledge and experience on the subject. His teachings and lectures are attended regularly.
-                                                    </textarea>
+                                                    <textarea class="form-control autogrow" cols="5" id="field-6" name="bio">{{$user->userProfile->bio}}</textarea>
                                                 </div>
                                             </div>
 
@@ -173,7 +171,7 @@
 
                                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                                             <div class="text-left">
-                                                <button type="button" class="btn btn-primary">Save</button>
+                                                <input type="submit" class="btn btn-primary" value="Save" />
                                                 <button type="button" class="btn">Cancel</button>
                                             </div>
                                         </div>
@@ -252,7 +250,11 @@
                             </header>
                             <div class="content-body">
                                 <div class="row">
-                                    <form action="#" method="post">
+                                    <form action="{{ url('users/update') }}" method="post">
+                                      {{ csrf_field() }}
+                                      <input name="_method" type="hidden" value="PUT">
+                                      <input type="hidden" value="socialInfo" name="section" class="form-control">
+                                      <input type="hidden" value="{{ $user->id }}" name="id" class="form-control">
                                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
 
                                             <div class="form-group">
@@ -260,7 +262,7 @@
                                                 <span class="desc"></span>
                                                 <div class="controls">
                                                   <input type="hidden" value="{{ $user->id }}" name="id" class="form-control">
-                                                    <input type="text" class="form-control"  value="http://www.facebook.com/userID" id="field-31">
+                                                    <input type="text" name="facebook" class="form-control"  value="{{$user->userProfile->facebook}}" id="field-31">
                                                 </div>
                                             </div>
 
@@ -268,7 +270,7 @@
                                                 <label class="form-label" for="field-1">Twitter URL</label>
                                                 <span class="desc"></span>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control"  value="http://www.twitter.com/userID" id="field-41">
+                                                    <input type="text" name="twitter" class="form-control"  value="{{$user->userProfile->twitter}}" id="field-41">
                                                 </div>
                                             </div>
 
@@ -276,14 +278,22 @@
                                                 <label class="form-label" for="field-1">Google Plus URL</label>
                                                 <span class="desc"></span>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control"  value="http://www.plus.google.com/userID" id="field-51">
+                                                    <input type="text" name="gplus" class="form-control"  value="{{$user->userProfile->gplus}}" id="field-51">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-1">Github URL</label>
+                                                <span class="desc"></span>
+                                                <div class="controls">
+                                                    <input type="text" name="github" class="form-control"  value="{{$user->userProfile->github}}" id="field-51">
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                                             <div class="text-left">
-                                                <button type="button" class="btn btn-primary">Save</button>
+                                                <input type="submit" class="btn btn-primary" value="Save" />
                                                 <button type="button" class="btn">Cancel</button>
                                             </div>
                                         </div>
