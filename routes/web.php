@@ -23,3 +23,7 @@ Route::get('/home', 'HomeController@index');
 Route::post('/users/createUser', 'UserController@createUser');
 Route::resource('users', 'UserController');
 //Route::resource('users', 'UserController', ['only' => ['index', 'show', 'create', 'edit' , 'update']]);
+//ticket Routes
+Route::get('tickets/userTickets', 'TicketsController@userTickets');
+Route::post('tickets/storeTicket', 'TicketsController@storeUserTicket');
+Route::resource('tickets', 'TicketsController');

@@ -464,6 +464,7 @@
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
+                        <!--
                         <li class="">
                             <a href="javascript:;">
                                 <i class="fa fa-envelope"></i>
@@ -623,6 +624,7 @@
                                 </li>
                             </ul>
                         </li>
+                      -->
                         <li class="">
                             <a href="javascript:;">
                                 <i class="fa fa-question-circle"></i>
@@ -631,10 +633,10 @@
                             </a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a class="" href="crm-tickets.html" >All Tickets</a>
+                                    <a class="" href="{{ url('tickets/userTickets') }}" >All Tickets</a>
                                 </li>
                                 <li>
-                                    <a class="" href="crm-ticket-add.html" >Add Ticket</a>
+                                    <a class="" href="{{ url('tickets/create') }}" >Add Ticket</a>
                                 </li>
                                 <li>
                                     <a class="" href="crm-ticket-edit.html" >Edit Ticket</a>
@@ -665,30 +667,6 @@
                             <ul class="sub-menu" style='display:block;'>
                                 <li>
                                     <a class="" href="general.html"  target = '_blank' >General Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="hospital.html"  target = '_blank' >Hospital Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="music.html"  target = '_blank' >Music Admin</a>
-                                </li>
-                                <li>
-                                    <a class="active" href="crm.html"  target = '_blank' >CRM Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="socialmedia.html"  target = '_blank' >Social Media Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="freelancing.html"  target = '_blank' >Freelancing Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="university.html"  target = '_blank' >University Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="ecommerce.html"  target = '_blank' >Ecommerce Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="blog.html"  target = '_blank' >Blog Admin</a>
                                 </li>
                             </ul>
                         </li>

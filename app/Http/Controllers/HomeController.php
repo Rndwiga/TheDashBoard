@@ -37,8 +37,5 @@ class HomeController extends Controller
                 return view('home')->with('user', $user);
             }
 
-
-
-      //  return view('home');
     }
 }
