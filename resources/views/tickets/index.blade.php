@@ -46,7 +46,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
 
                             <!-- ********************************************** -->
-                            @if (isset($tickets))
+                            @if (!isset($tickets))
                                 <p>You have not created any tickets.</p>
                             @else
 

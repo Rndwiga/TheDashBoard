@@ -27,3 +27,14 @@ Route::resource('users', 'UserController');
 Route::get('tickets/userTickets', 'TicketsController@userTickets');
 Route::post('tickets/storeTicket', 'TicketsController@storeUserTicket');
 Route::resource('tickets', 'TicketsController');
+
+//Inventory
+
+Route::get('inventory/index', 'InventoryController@index');
+Route::get('inventory/{id}/show', 'InventoryController@show');
+Route::get('inventory/{id}/edit', 'InventoryController@edit');
+Route::get('inventory/{id}/destroy', 'InventoryController@destroy');
+Route::put('inventory/updateItem/{id}', 'InventoryController@update');
+
+Route::get('inventory/anyData', ['as' => 'inventory.anyData' , 'uses' => 'InventoryController@anyData']);
+//Route::get('inventory/anyData',);

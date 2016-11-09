@@ -370,7 +370,9 @@
                       @else
                         <li class="profile">
                             <a href="#" data-toggle="dropdown" class="toggle">
+                              @if(!empty($user))
                                 <img src="{{ asset($user->userProfile->profile_picture)}}" alt="user-image" class="img-circle img-inline">
+                              @endif
                                 <span>{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></span>
                             </a>
                             <ul class="dropdown-menu profile animated fadeIn">
@@ -432,9 +434,11 @@
                     <div class="profile-info row">
 
                         <div class="profile-image col-md-4 col-sm-4 col-xs-4">
+                          @if(!empty($user))
                             <a href="{{ action('UserController@show', Auth::user()->id) }}">
                                 <img src="{{ asset($user->userProfile->profile_picture)}}" class="img-responsive img-circle">
                             </a>
+                          @endif
                         </div>
 
                         <div class="profile-details col-md-8 col-sm-8 col-xs-8">
@@ -625,6 +629,24 @@
                             </ul>
                         </li>
                       -->
+                        <li class="">
+                            <a href="javascript:;">
+                                <i class="fa fa-question-circle"></i>
+                                <span class="title">Inventory</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="sub-menu" >
+                                <li>
+                                    <a class="" href="{{ url('inventory/index') }}" >All Tickets</a>
+                                </li>
+                                <li>
+                                    <a class="" href="{{ url('tickets/create') }}" >Add Ticket</a>
+                                </li>
+                                <li>
+                                    <a class="" href="crm-ticket-edit.html" >Edit Ticket</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="">
                             <a href="javascript:;">
                                 <i class="fa fa-question-circle"></i>
@@ -919,11 +941,6 @@
         <!-- CORE JS FRAMEWORK - END -->
 
 
-        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
-        @yield('otherScripts')
-        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
-
-
         <!-- CORE TEMPLATE JS - START -->
         <script src="{{ asset('assets/js/scripts.js ') }}" type="text/javascript"></script>
         <!-- END CORE TEMPLATE JS - END -->
@@ -933,16 +950,9 @@
         <script src="{{ asset('assets/js/chart-sparkline.js ') }}" type="text/javascript"></script>
         <!-- Sidebar Graph - END -->
 
-
-
-
-
-
-
-
-
-
-
+        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
+        @yield('otherScripts')
+        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
 
         <!-- General section box modal start -->
