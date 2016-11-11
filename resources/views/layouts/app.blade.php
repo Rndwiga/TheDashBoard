@@ -462,7 +462,7 @@
                     <ul class='wraplist'>
 
 
-                        <li class="">
+                        <li class="{{ isset($css->dashboard) ? $css->openDropdown : '' }}">
                             <a href="{{ url('/home') }}">
                                 <i class="fa fa-dashboard"></i>
                                 <span class="title">Dashboard</span>
@@ -629,25 +629,22 @@
                             </ul>
                         </li>
                       -->
-                        <li class="">
+                        <li class="{{ isset($css->inventory) ? $css->openDropdown : '' }}">
                             <a href="javascript:;">
-                                <i class="fa fa-question-circle"></i>
+                                <i class="fa fa-calendar"></i>
                                 <span class="title">Inventory</span>
                                 <span class="arrow "></span>
                             </a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a class="" href="{{ url('inventory/index') }}" >All Tickets</a>
+                                    <a class="" href="{{ url('inventory') }}" >All Items</a>
                                 </li>
                                 <li>
-                                    <a class="" href="{{ url('tickets/create') }}" >Add Ticket</a>
-                                </li>
-                                <li>
-                                    <a class="" href="crm-ticket-edit.html" >Edit Ticket</a>
+                                    <a class="" href="{{ url('inventory/create') }}" >Add Item</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="">
+                        <li class="{{ isset($css->tickets) ? $css->openDropdown : '' }}">
                             <a href="javascript:;">
                                 <i class="fa fa-question-circle"></i>
                                 <span class="title">Tickets</span>
@@ -660,12 +657,9 @@
                                 <li>
                                     <a class="" href="{{ url('tickets/create') }}" >Add Ticket</a>
                                 </li>
-                                <li>
-                                    <a class="" href="crm-ticket-edit.html" >Edit Ticket</a>
-                                </li>
                             </ul>
                         </li>
-                        <li class="">
+                        <li class="{{ isset($css->users) ? $css->openDropdown : '' }}">
                             <a href="javascript:;">
                                 <i class="fa fa-user"></i>
                                 <span class="title">Users</span>
@@ -680,7 +674,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="open">
+                        <li class="">
                             <a href="javascript:;">
                                 <i class="fa fa-suitcase"></i>
                                 <span class="title">Multi Purpose</span>

@@ -10,7 +10,8 @@
                         <div class="page-title">
 
                             <div class="pull-left">
-                                <h1 class="title">User Profile</h1>                            </div>
+                                <h1 class="title">Asset Register</h1>
+                              </div>
 
                             <div class="pull-right hidden-xs">
                                 <ol class="breadcrumb">
@@ -21,7 +22,7 @@
                                         <a href="ui-pricing.html">Pages</a>
                                     </li>
                                     <li class="active">
-                                        <strong>Profile</strong>
+                                        <strong>show</strong>
                                     </li>
                                 </ol>
                             </div>
@@ -65,7 +66,7 @@
                                                                 <th scope="row">Serial</th>
                                                                 <td>{{ $item->asset_serial }}</td>
                                                                 <td scope="row">Tag</td>
-                                                                <td></td>
+                                                                <td>{{ $item->asset_tag }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">Location</th>
@@ -100,9 +101,13 @@
         </div>
         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
             <div class="text-left">
-                <input type="submit" class="btn btn-primary" value="Update" />
-                <a href="{!! action('InventoryController@index') !!}" class="btn btn-success">Back</a>
-                <a href="{!! action('InventoryController@destroy', $item->id) !!}" class="btn btn-danger">Delete</a>
+                <a href="{!! action('InventoryController@edit', $item->id) !!}" class="btn btn-primary pull-left">Update</a>
+                <a href="{!! action('InventoryController@index') !!}" class="btn btn-success pull-left">Back</a>
+                <form action="/inventory/{{ $item->id }}" method="POST" class="pull-left">
+                  {{ csrf_field() }}
+                  <input name="_method" type="hidden" value="DELETE">
+                  <input type="submit" class="btn btn-danger" value="Delete" />
+                </form>
             </div>
         </div>
 

@@ -44,7 +44,7 @@
                                     <div class="content-body">    <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <div class="table-responsive">
-                                                  <form action="{{ url('inventory/updateItem') }}" method="post">
+                                                  <form action="{{ url('inventory/update') }}" method="post">
                                                     {{ csrf_field() }}
                                                     <input name="_method" type="hidden" value="PUT">
                                                     <input type="hidden" value="{{ $item->id }}" name="id" class="form-control">
@@ -99,13 +99,17 @@
                                     </div>
                                 </section>
                               </div>
-            <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
-                <div class="text-left">
-                    <input type="submit" class="btn btn-primary" value="Update" />
-                    <a href="{!! action('InventoryController@index') !!}" class="btn btn-success">Back</a>
-                    <a href="{!! action('InventoryController@destroy', $item->id) !!}" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
+                          <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
+                              <div class="text-left">
+                                  <a href="{!! action('InventoryController@edit', $item->id) !!}" class="btn btn-primary pull-left">Update</a>
+                                  <a href="{!! action('InventoryController@index') !!}" class="btn btn-success pull-left">Back</a>
+                                  <form action="/inventory/{{ $item->id }}" method="POST" class="pull-left">
+                                    {{ csrf_field() }}
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <input type="submit" class="btn btn-danger" value="Delete" />
+                                  </form>
+                              </div>
+                          </div>
         </form>
 
 
