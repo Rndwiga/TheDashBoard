@@ -96,9 +96,10 @@
                                 </li>
 																<!-- Authentication Links -->
 																@if (Auth::guest())
-																		<li class="submenu"><a href="{{ url('/login') }}">Login</a></li>
+
 																@else
-                                  <li class="submenu"><a href="{{ url('/register') }}">Register</a></li>
+                                    <li class="submenu"><a href="{{ url('/login') }}">Login</a></li>
+                                    <li class="submenu"><a href="{{ url('/register') }}">Register</a></li>
 																		<li class="submenu"><a href="{{ url('/home') }}">Admin</a></li>
 																@endif
                                 <!-- Search Icon -->
