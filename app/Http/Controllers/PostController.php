@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         //Get 5 latest posts from db that are active
-        $posts = Post::where('active',0)->orderBy('created_at', 'desc')->paginate(1);
+        $posts = Post::where('active',0)->orderBy('created_at', 'desc')->paginate(4);
       //  $posts = Post::all()->paginate(5);
         //heading
       //  $pageData = (object)array('title' => 'Latest Posts', 'css' => 'sidebar-collapse', 'css2' => 'sidebar_shift', 'css3' => 'collapseit');
@@ -166,6 +166,8 @@ class PostController extends Controller
     public function destroy(Request $request, $id)
     {
         $post = Post::find($id);
+
+      //  return $post;
         if($post &&($post->author_id == $request->user()->id || $request->user()->is_admin()))
         {
           $post->delete();
@@ -173,7 +175,7 @@ class PostController extends Controller
         }else {
           $data['errors'] = 'invalid operation. you cant delete post';
         }
-        return redirect('/')->with($data);
+        return redirect('/Posts')->with($data);
     }
 
     public function userPosts(Request $request, $id)
@@ -181,9 +183,35 @@ class PostController extends Controller
         //check if user is admin or author for them to Post
       //  if($request->user()->can_post()) //change to this after doing a fresh migration
     //  $posts = Post::where('author_id',$id)->where('active',1)->orderBy('created_at','desc')->paginate(5);
-      $posts = Post::where('author_id',$id)->where('active',1)->orderBy('created_at','desc')->get();
+      $posts = Post::where('author_id',$id)->where('active',0)->orderBy('created_at','desc')->get();
     //  return $posts;
       $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'published'=> 'Published Posts');
       return view('posts.published', compact('css', 'posts'));
+    }
+    public function uploadImage(Request $request)
+    {
+      $allowed = array('png', 'jpg', 'gif');
+        $rules = [
+            'file' => 'required|image|mimes:jpeg,jpg,png,gif'
+        ];
+        $data = Input::all();
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            return '{"status":"Invalid File type"}';
+        }
+        if(Input::hasFile('file')){
+            $extension = Input::file('file')->getClientOriginalExtension();
+            if(!in_array(strtolower($extension), $allowed)){
+                return '{"status":"Invalid File type"}';
+            } else {
+                $filename = uniqid() . '_attachment.' . $extension;
+                if (Input::file('file')->move('source/', $filename)) {
+                    echo url('source/' . $filename);
+                    exit;
+                }
+            }
+        } else {
+            return '{"status":"Invalid File type"}';
+        }
     }
 }

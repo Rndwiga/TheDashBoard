@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<section id="main-content" class=" ">
+
                 <section class="wrapper main-wrapper" style=''>
 
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -61,6 +61,11 @@
                                                   <div>
                                                     {!! $post->body !!}
                                                   </div>
+                                                  <form action="{{ $post->id }}" method="POST" class="pull-left">
+                                                    {{ csrf_field() }}
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <input type="submit" class="btn btn-danger" value="Delete" />
+                                                  </form>
                                               @endif
                                               @if(Auth::guest())
                                                 <p>Login to Comment</p>
@@ -135,7 +140,6 @@
 
 
                 </section>
-            </section>
 @endsection
 
 @section('otherScripts')

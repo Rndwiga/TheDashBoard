@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('otherCSS')
-<link href="{{ asset('assets/plugins/bootstrap3-wysihtml5/css/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" media="screen"/>
 <link href="{{ asset('assets/plugins/tagsinput/css/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css" media="screen"/>        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
+<link href="{{ asset('assets/plugins/summernote-master/summernote.css') }}" rel="stylesheet" type="text/css" media="screen"/>        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
 @endsection
 
@@ -93,7 +93,7 @@
 
                                                 <div class="col-md-12 col-sm-12 col-xs-12 mail_view_title">
                                                 <!--  <form action="{{ url('Posts') }}" method="post" enctype="multipart/form-data"> -->
-                                                  <form action="{{ url('Posts') }}" method="post">
+                                                  <form action="{{ url('Posts') }}" method="post" enctype="multipart/form-data">
                                                     {{ csrf_field() }}
                                                     <div class='pull-right'>
                                                         <button class="btn btn-default btn-icon" rel="tooltip" data-color-class="primary" data-animate=" animated fadeIn" data-toggle="tooltip" data-original-title="Send" data-placement="top">
@@ -121,8 +121,8 @@
 
                                                     <div class="form-group">
                                                         <label class="form-label" for="field-1">Message:</label>
-                                                        <textarea name="body" class="mail-compose-editor" placeholder="Enter text ..." style="width: 100%; height: 250px; font-size: 14px; line-height: 23px;padding:15px;">
-                                                            {{ old('body') }}
+                                                        <textarea name="body" class="summernote" placeholder="Enter text ..." style="width: 100%; height: 250px; font-size: 14px; line-height: 23px;padding:15px;">
+
                                                         </textarea>
                                                     </div>
 
@@ -136,7 +136,7 @@
                                                     </div>
 
                                                 </div>
-
+                                            </form>
                                             </div>
 
                                         </div>
@@ -154,6 +154,7 @@
 @section('otherScripts')
  <script src="{{ asset('assets/plugins/autosize/autosize.min.js ') }}" type="text/javascript"></script><!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 <script src="{{ asset('assets/plugins/tagsinput/js/bootstrap-tagsinput.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/plugins/bootstrap3-wysihtml5/js/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/plugins/summernote-master/summernote.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/compose.js') }}" type="text/javascript"></script>
 
 @endsection

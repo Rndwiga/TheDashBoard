@@ -106,8 +106,7 @@
                                                                 <td>{{$post->created_at}}</td>
                                                                 <td>{{$post->updated_at}}</td>
                                                                 <td>
-                                                                   <a href="{!! action('PostController@edit', $post->slug) !!}">Edit</a>
-                                                                   <a href="{!! action('PostController@destroy', $post->slug) !!}">Delete</a>
+                                                                   <a href="{!! action('PostController@edit', $post->slug) !!}" class="btn btn-primary">Edit</a>
                                                                 </td>
                                                             </tr>
                                                             @endforeach

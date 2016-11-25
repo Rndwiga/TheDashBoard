@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<section id="main-content" class=" ">
+
               <section class="wrapper main-wrapper" style=''>
 
                   <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -75,7 +75,7 @@
 
 
               </section>
-          </section>
+
 @endsection
 @section('otherScripts')
 

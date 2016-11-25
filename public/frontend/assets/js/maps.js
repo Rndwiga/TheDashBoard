@@ -12,7 +12,7 @@ var $ = jQuery.noConflict();
         var map;
         var MY_MAPTYPE_ID = 'custom_style';
         function initialize() {
-            var featureOpts = [
+            var featureOpts = [ 
                 {
                     "featureType": "all",
                     "elementType": "labels.text.fill",
@@ -191,7 +191,7 @@ var $ = jQuery.noConflict();
                     ]
                 }
             ];
-            
+
             var myLatlng = new google.maps.LatLng(contact.lat, contact.lon);
             var mapOptions = {
                 zoom: 15,
@@ -223,5 +223,5 @@ var $ = jQuery.noConflict();
             });
         }
         google.maps.event.addDomListener(window, 'load', initialize);
-    
+
 })(jQuery);

@@ -51,6 +51,7 @@ Route::resource('ContactDetails', 'ContactDetailsController');
 Route::resource('Emails', 'EmailController');
 //Posts
 Route::get('Posts/{id}/userPosts', 'PostController@userPosts');
+Route::post('Posts/uploadImage', 'PostController@uploadImage');
 Route::resource('Posts', 'PostController');
 
 /*
