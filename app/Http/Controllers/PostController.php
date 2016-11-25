@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         //Get 5 latest posts from db that are active
-        $posts = Post::where('active',0)->orderBy('created_at', 'desc')->paginate(4);
+        $posts = Post::where('active', 1)->orderBy('created_at', 'desc')->paginate(4);
       //  $posts = Post::all()->paginate(5);
         //heading
       //  $pageData = (object)array('title' => 'Latest Posts', 'css' => 'sidebar-collapse', 'css2' => 'sidebar_shift', 'css3' => 'collapseit');

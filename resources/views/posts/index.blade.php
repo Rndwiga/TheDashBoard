@@ -60,7 +60,7 @@
                                             </p>
                                             <img class="media-object" src="{{ asset('data/blog.png') }}" alt="">
                                             <p class="blog-content">
-                                              {!! str_limit($post->body, $limit = 100, $end = '....... <a href='.url("Posts/".$post->slug).'>Read More</a>') !!}
+                                              {!! str_limit(strip_tags($post->body), $limit = 100, $end = '....... <a href='.url("Posts/".$post->slug).'>Read More</a>') !!}
 
                                         </div>
                                         @endforeach

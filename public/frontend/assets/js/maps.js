@@ -7,12 +7,12 @@ var $ = jQuery.noConflict();
     /* =  Contact Map
     /*-------------------------------------------------*/
 
-    var contact = {"lat":"41.9099856", "lon":"12.3955719"}; //Change a map coordinate here!
+    var contact = {"lat":"-1.2324566", "lon":"36.8994921"}; //Change a map coordinate here!
 
         var map;
         var MY_MAPTYPE_ID = 'custom_style';
         function initialize() {
-            var featureOpts = [ 
+            var featureOpts = [
                 {
                     "featureType": "all",
                     "elementType": "labels.text.fill",
@@ -194,7 +194,7 @@ var $ = jQuery.noConflict();
 
             var myLatlng = new google.maps.LatLng(contact.lat, contact.lon);
             var mapOptions = {
-                zoom: 15,
+                zoom: 14,
                 center: myLatlng,
                 mapTypeControlOptions: {
                     mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]

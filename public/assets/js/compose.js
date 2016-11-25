@@ -1,13 +1,8 @@
 $(document).ready(function() {
     $('.summernote').summernote({
-	  height: 350,
-    callbacks: {
-                onImageUpload: function(files, editor, $editable) {
-                    alert('evoked');
-                    sendFile(files[0],editor,$editable);
-                }
-            }
+	  height: 350
 	});
+/*
   function sendFile(file,editor,welEditable) {
             data = new FormData();
             data.append("file", file);
@@ -26,4 +21,5 @@ $(document).ready(function() {
                 }
             });
         }
+    */
 });
