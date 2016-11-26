@@ -44,7 +44,6 @@
                             <div class="content-body">    <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <!-- start -->
-
                                         <div class="blog_post full_blog_post">
                                             <h3><a href="ui-blog-item.html">{{ $post->title }}</a></h3>
                                             <h5>Written by <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a> on {{ $post->created_at->format('M d,Y \a\t h:i a') }} .</h5>

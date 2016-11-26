@@ -20,10 +20,6 @@ class PostController extends Controller
     {
         //Get 5 latest posts from db that are active
         $posts = Post::where('active', 1)->orderBy('created_at', 'desc')->paginate(4);
-      //  $posts = Post::all()->paginate(5);
-        //heading
-      //  $pageData = (object)array('title' => 'Latest Posts', 'css' => 'sidebar-collapse', 'css2' => 'sidebar_shift', 'css3' => 'collapseit');
-      //  return view('posts.index', compact('posts', 'pageData'));
       $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts');
         //return view('posts.show', compact('posts', 'post', 'css'));
       //  return $posts;
@@ -88,7 +84,8 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
-        if(!$post)
+
+        if($post)
         {
           return redirect('/')->withErrors('Post not found');
         }

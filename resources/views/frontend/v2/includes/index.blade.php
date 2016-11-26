@@ -171,108 +171,43 @@
 										<h2 class="margin-bottom-null title left grey">News</h2>
 										<div class="padding-onlytop-md">
 												<h3 class="grey big margin-bottom-small">Latest Posts. Stay tuned!</h3>
-												<p class="heading left margin-bottom grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem dolorem voluptas quo ipsum obcaecati placeat, architecto, amet voluptatum esse officia, distinctio dignissimos minima dicta. Veniam debitis eum illum
-														asperiores animi!</p>
-												<a href="#" class="btn-alt active shadow small margin-null">Read all news</a>
+												<p class="heading left margin-bottom grey">We share daily the latest technology trends and tutorials on how perfect
+												your web development project.</p>
+												<a href="{{ url('/blog') }}" class="btn-alt active shadow small margin-null">Read all news</a>
 										</div>
 								</div>
 						</div>
 						<div class="col-md-8 text" id="news">
 								<!-- Single News -->
-								<div class="col-sm-6 single-news">
-										<article>
-												<img src="{{asset('frontend/assets/img/news1.jpg')}}" alt="">
-												<div class="content">
-														<span class="read">
-																<i class="material-icons">subject</i>
-														</span>
-														<h3>Meetup In Rome</h3>
-														<span class="category">Tech</span>
-														<span class="category">Social</span>
-														<span class="date">02.11.2016</span>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, voluptas corporis. Maxime sapiente, adipisci laborum.</p>
-												</div>
-												<a href="standard-post.html" class="link"></a>
-										</article>
-								</div>
-								<!-- END Single News -->
-								<div class="col-sm-6 single-news">
-										<article>
-												<img src="{{asset('frontend/assets/img/news3.jpg')}}" alt="">
-												<div class="content">
-														<span class="read">
-																<i class="material-icons">subject</i>
-														</span>
-														<h3>Brand Power</h3>
-														<span class="category">People</span>
-														<span class="category">Topic</span>
-														<span class="date">12.05.2016</span>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, voluptas corporis. Maxime sapiente, adipisci laborum.</p>
-												</div>
-												<a href="gallery-post.html" class="link"></a>
-										</article>
-								</div>
+								@if(isset($posts))
+									@foreach($posts as $post)
+											<div class="col-sm-6 single-news">
+													<article>
+														<!--	<img src="{{asset('frontend/assets/img/news1.jpg')}}" alt=""> -->
+														<br/> <!--remove this after activating the image-->
+															<div class="content">
+																	<span class="read">
+																			<i class="material-icons">subject</i>
+																	</span>
+																	<h3>{{ $post->title }}</h3>
+																	<span class="category">Tech</span>
+																	<span class="category">Social</span>
+																	<span class="date">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</span>
+																	<p>
+																		{!! str_limit(strip_tags($post->body), $limit = 100, $end = '....... <a href='.url("/blog/".$post->slug).'>Read More</a>') !!}
+
+																	</p>
+															</div>
+															<a href="{{url('blog/'.$post->slug)}}" class="link"></a>
+													</article>
+											</div>
+										@endforeach
+											<!-- END Single News -->
+							@endif
 						</div>
 				</div>
 				<!-- END Section News -->
-				<!--  Latest News  -->
-				<div id="news" class="text grey-background">
-						<div class="row padding-md-bottom">
-								<div class="col-md-4 single-news">
-										<article>
-												<img src="{{asset('frontend/assets/img/news1.jpg')}}" alt="">
-												<div class="content">
-														<span class="read">
-																<i class="material-icons">subject</i>
-														</span>
-														<h3>Meetup In Rome</h3>
-														<span class="category">Tech</span>
-														<span class="category">Social</span>
-														<span class="date">02.11.2016</span>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, voluptas corporis. Maxime sapiente, adipisci laborum.</p>
-												</div>
-												<a href="gallery-post.html" class="link"></a>
-										</article>
-								</div>
-								<div class="col-md-4 single-news">
-										<article>
-												<img src="{{asset('frontend/assets/img/news3.jpg')}}" alt="">
-												<div class="content">
-														<span class="read">
-																<i class="material-icons">subject</i>
-														</span>
-														<span class="category">People</span>
-														<span class="category">Topic</span>
-														<span class="date">02.11.2016</span>
-														<h3>Brand Power</h3>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, voluptas corporis. Maxime sapiente, adipisci laborum.</p>
-												</div>
-												<a href="video-post.html" class="link"></a>
-										</article>
-								</div>
-								<div class="col-md-4 single-news">
-										<article>
-												<img src="{{asset('frontend/assets/img/news4.jpg')}}" alt="">
-												<div class="content">
-														<span class="read">
-																<i class="material-icons">subject</i>
-														</span>
-														<span class="category">Blog</span>
-														<span class="category">Company</span>
-														<span class="date">01.01.2016</span>
-														<h3>A Year of success</h3>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, voluptas corporis. Maxime sapiente, adipisci laborum.</p>
-												</div>
-												<a href="audio-post.html" class="link"></a>
-										</article>
-								</div>
-								<div class="col-md-12">
-										<div class="text text-center padding-bottom-null padding-md-top-null">
-												<a href="blog-masonry-sidebar.html" class="btn-alt active shadow small margin-null">View the blog</a>
-										</div>
-								</div>
-						</div>
-				</div>
+
 				@endif
 				<div class="row margin-leftright-null">
 						<div class="col-md-12 clearfix color-background padding-leftright-null">

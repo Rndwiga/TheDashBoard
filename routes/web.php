@@ -11,15 +11,14 @@
 |
 */
 //Landing page
-Route::get('/', function () {
-    return view('frontend/v2/includes/index'); //index
-});
+Route::get('/', 'frontendController@index');
+Route::resource('blog', 'frontendController');
+
 Route::get('/about', function () {
     return view('frontend/v2/includes/about'); //about
 });
-Route::get('/blog', function () {
-    return view('frontend/v2/includes/blog'); //blog
-});
+Route::get('/blog', 'frontendController@showBlog'); //blog
+
 Route::get('/services', function () {
    return view('frontend/v2/includes/services'); //serv
 });
