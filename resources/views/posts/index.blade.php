@@ -51,7 +51,7 @@
                                       @else
                                       @foreach( $posts as $post )
                                         <div class="blog_post">
-                                            <h3><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a></h3>
+                                            <h3><a href="{{ url('Posts/'.$post->slug) }}">{{ $post->title }}</a></h3>
                                             <h5>Written by <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a> on {{ $post->created_at->format('M d,Y \a\t h:i a') }}.</h5>
                                             <p class="blog_info">
                                                 <i class="fa fa-comment"></i> <a href="#comments">3 comments</a>

@@ -163,7 +163,7 @@
 				</div>
 
 				<!--  END Projects Section  -->
-				@if (!Auth::guest())
+
 				<!-- Section News -->
 				<div class="row margin-leftright-null grey-background">
 						<div class="col-md-4 padding-leftright-null">
@@ -208,7 +208,7 @@
 				</div>
 				<!-- END Section News -->
 
-				@endif
+		@if (!Auth::guest())			
 				<div class="row margin-leftright-null">
 						<div class="col-md-12 clearfix color-background padding-leftright-null">
 								<div class="partners">
@@ -233,6 +233,7 @@
 								</div>
 						</div>
 				</div>
+			@endif
 				<div class="row padding-md margin-leftright-null dark-background">
 						<div class="col-md-12 text-center">
 								<h4 class="big margin-bottom-small white">Get the premium digital services</h4>

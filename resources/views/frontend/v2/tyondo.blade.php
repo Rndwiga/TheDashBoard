@@ -77,16 +77,13 @@
                                 <li class="submenu">
                                     <a href="{{ url('/about') }}">About</a>
                                 </li>
+                                <li class="submenu">
+                                    <a href="{{ url('/blog') }}">Blog</a>
+                                </li>
 																@if (!Auth::guest())
                                 <li class="submenu">
                                     <a href="{{ url('/services') }}">Services</a>
                                 </li>
-
-                                <li class="submenu">
-                                    <a href="{{ url('/blog') }}">Blog</a>
-                                </li>
-                                @endif
-																@if (!Auth::guest())
                                 <li>
                                     <a href="{{ url('/elements') }}">Elements</a>
                                 </li>
