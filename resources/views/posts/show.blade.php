@@ -11,7 +11,7 @@
                         <div class="page-title">
 
                             <div class="pull-left">
-                                <h1 class="title">Single Blog Post</h1>                            </div>
+                                <h1 class="title">Post</h1>                            </div>
 
                             <div class="pull-right hidden-xs">
                                 <ol class="breadcrumb">
@@ -34,7 +34,7 @@
                     <div class="col-lg-12">
                         <section class="box ">
                             <header class="panel_header">
-                                <h2 class="title pull-left">Single Blog Post</h2>
+                                <h2 class="title pull-left">{{ $post->title }}</h2>
                                 <div class="actions panel_actions pull-right">
                                     <i class="box_toggle fa fa-chevron-down"></i>
                                     <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
@@ -43,8 +43,6 @@
                             </header>
                             <div class="content-body">    <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-
-
                                         <!-- start -->
 
                                         <div class="blog_post full_blog_post">

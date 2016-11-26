@@ -50,7 +50,9 @@ Route::resource('ContactDetails', 'ContactDetailsController');
 //Contacts
 Route::resource('Emails', 'EmailController');
 //Posts
-Route::get('Posts/{id}/userPosts', 'PostController@userPosts');
+//Route::get('Posts/{id}/userPosts', 'PostController@userPosts');
+Route::get('Posts/userPosts', 'PostController@userPosts');
+Route::get('Posts/userDrafts', 'PostController@userDrafts');
 Route::post('Posts/uploadImage', 'PostController@uploadImage');
 Route::resource('Posts', 'PostController');
 

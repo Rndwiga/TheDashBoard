@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostFormRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Comment;
 use App\User;
@@ -41,7 +42,7 @@ class PostController extends Controller
       //  if($request->user()->can_post()) //change to this after doing a fresh migration
         if(($request->user()->can_post()))
         {
-          $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts');
+          $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'createPosts' => 'btn btn-primary');
           return view('posts.create', compact('css'));
 
         }else {
@@ -92,7 +93,9 @@ class PostController extends Controller
           return redirect('/')->withErrors('Post not found');
         }
         $comments = $post->comment; //fetch post comments
-        return view('posts.show', compact('post', 'comments'));
+        $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts');
+
+        return view('posts.show', compact('post', 'comments', 'css'));
 
     }
 
@@ -178,15 +181,25 @@ class PostController extends Controller
         return redirect('/Posts')->with($data);
     }
 
-    public function userPosts(Request $request, $id)
+    public function userPosts(Request $request)
     {
         //check if user is admin or author for them to Post
       //  if($request->user()->can_post()) //change to this after doing a fresh migration
     //  $posts = Post::where('author_id',$id)->where('active',1)->orderBy('created_at','desc')->paginate(5);
-      $posts = Post::where('author_id',$id)->where('active',0)->orderBy('created_at','desc')->get();
+      $posts = Post::where('author_id', Auth::id())->where('active',1)->orderBy('created_at','desc')->get();
     //  return $posts;
-      $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'published'=> 'Published Posts');
-      return view('posts.published', compact('css', 'posts'));
+      $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'published'=> 'Published Posts', 'publishedPosts' => 'btn btn-primary');
+        return view('posts.published', compact('css', 'posts'));
+    }
+    public function userDrafts(Request $request)
+    {
+        //check if user is admin or author for them to Post
+      //  if($request->user()->can_post()) //change to this after doing a fresh migration
+    //  $posts = Post::where('author_id',$id)->where('active',1)->orderBy('created_at','desc')->paginate(5);
+      $posts = Post::where('author_id', Auth::id())->where('active',0)->orderBy('created_at','desc')->get();
+    //  return $posts;
+      $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'published'=> 'Published Posts', 'draftPosts' => 'btn btn-primary');
+        return view('posts.draft', compact('css', 'posts'));
     }
     public function uploadImage(Request $request)
     {

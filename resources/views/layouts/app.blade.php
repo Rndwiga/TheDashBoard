@@ -486,7 +486,7 @@
                                     <a class="" href="{{ url('Posts') }}" >View Posts</a>
                                 </li>
                                 <li>
-                                    <a class="" href="{{ url('Posts/' .Auth::id().'/userPosts') }}" >Manage Posts</a>
+                                    <a class="" href="{{ url('Posts/userPosts') }}" >Manage Posts</a>
                                 </li>
                             </ul>
                         </li>
