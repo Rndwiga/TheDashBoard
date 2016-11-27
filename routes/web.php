@@ -45,7 +45,7 @@ Route::resource('tickets', 'TicketsController');
 //Inventory
 Route::resource('inventory', 'InventoryController');
 //Contacts
-Route::resource('ContactDetails', 'ContactDetailsController');
+Route::resource('phonebook', 'ContactDetailsController');
 //Contacts
 Route::resource('Emails', 'EmailController');
 //Posts

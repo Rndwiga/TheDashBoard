@@ -8,7 +8,7 @@
 								<div class="text">
 										<h1 class="white flex-animation">Welcome to <br> Tyondo </h1>
 										<h2 class="white flex-animation">WE MAKE YOUR IDEAS COME TO LIFE</h2>
-										<a href="#" class="shadow btn-alt small activetwo margin-bottom-null flex-animation">More info</a>
+										<a href="{{ url('/')}}" class="shadow btn-alt small activetwo margin-bottom-null flex-animation">More info</a>
 								</div>
 								<div class="gradient dark"></div>
 						</li>
@@ -16,7 +16,7 @@
 								<div class="text">
 										<h1 class="white flex-animation no-opacity">Flexible and<br> very easy to use</h1>
 										<h2 class="white flex-animation no-opacity">LAUNCH AND IMPROVE YOUR SERVICE NOW</h2>
-										<a href="#" class="shadow btn-alt small activetwo margin-bottom-null flex-animation no-opacity">More info</a>
+										<a href="{{ url('/')}}" class="shadow btn-alt small activetwo margin-bottom-null flex-animation no-opacity">More info</a>
 								</div>
 								<div class="gradient dark"></div>
 						</li>
@@ -208,7 +208,7 @@
 				</div>
 				<!-- END Section News -->
 
-		@if (!Auth::guest())			
+		@if (!Auth::guest())
 				<div class="row margin-leftright-null">
 						<div class="col-md-12 clearfix color-background padding-leftright-null">
 								<div class="partners">
@@ -237,7 +237,7 @@
 				<div class="row padding-md margin-leftright-null dark-background">
 						<div class="col-md-12 text-center">
 								<h4 class="big margin-bottom-small white">Get the premium digital services</h4>
-								<a href="#" target="_blank" class="btn-alt small white margin-null active">Get Intouch</a>
+								<a href="{{ url('/contact') }}" target="_blank" class="btn-alt small white margin-null active">Get Intouch</a>
 						</div>
 				</div>
 		</div>

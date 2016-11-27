@@ -6,7 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-			protected $fillable = [
-				'contact_picture', 'name', 'mobile', 'address', 'profession', 'contactId'
-			];
+    protected $guarded = []; //restrict columns from modification
 }

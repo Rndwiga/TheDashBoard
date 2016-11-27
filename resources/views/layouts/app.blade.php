@@ -16,7 +16,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon" />    <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />    <!-- Favicon -->
         <link rel="apple-touch-icon-precomposed" href="assets/images/apple-touch-icon-57-precomposed.png">	<!-- For iPhone -->
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/apple-touch-icon-114-precomposed.png">    <!-- For iPhone 4 Retina display -->
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/apple-touch-icon-72-precomposed.png">    <!-- For iPad -->
@@ -469,7 +469,7 @@
                             </a>
                         </li>
                         <li class="{{ isset($css->contacts) ? $css->openDropdown : '' }}">
-                            <a href="{{ url('ContactDetails') }}">
+                            <a href="{{ url('phonebook') }}">
                                 <i class="fa fa-phone "></i>
                                 <span class="title">Contacts</span>
                             </a>

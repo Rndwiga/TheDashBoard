@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Inventory;
+use App\Phonebook as Contact;
 use App\UserProfile;
-use App\Contact;
 use Datatables;
 
 class ContactDetailsController extends Controller

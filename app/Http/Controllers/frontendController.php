@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Comment;
 use App\User;
+use App\Contact as ContactUs;
 
 class frontendController extends Controller
 {
@@ -40,7 +41,23 @@ class frontendController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      //  return $request;
+        //  return $request;
+            $this->validate($request, [
+                  'name' => 'max:255',
+                  'email' => 'max:255',
+                  'subjectForm' => 'max:255',
+                  'messageForm' => 'max:255',
+              ]);
+
+              $contact = new ContactUs;
+              $contact->name = $request->get('name');
+              $contact->email = $request->get('email');
+              $contact->subjectForm = $request->get('subjectForm');
+              $contact->messageForm = $request->get('messageForm');
+              //return $contact;
+              $contact->save();
+            return redirect('/');
     }
 
     /**

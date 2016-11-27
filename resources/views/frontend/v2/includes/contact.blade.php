@@ -8,7 +8,7 @@
                         <li style="background-image:url({{asset('frontend/assets/img/contact.jpg')}})">
                             <div class="text text-center">
                                 <h1 class="white margin-bottom-small">Contact</h1>
-                                <p class="heading white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde veniam aperiam rerum quis atque, illum.</p>
+                                <p class="heading white">Get intouch with us.</p>
                             </div>
                             <div class="gradient dark"></div>
                         </li>
@@ -55,7 +55,9 @@
                                 <h2 class="margin-bottom-null title left">Get in touch</h2>
                                 <div class="padding-onlytop-md">
                                     <h3 class="grey big margin-bottom-small">Start a project with us</h3>
-                                    <p class="heading left margin-bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem harum aspernatur sapiente error, voluptas fuga, laudantium ullam magni fugit. Qui!</p>
+                                    <p class="heading left margin-bottom">
+                                      Do you have questions that need to be answered? Talk to a human.
+                                    </p>
                                     <p><span class="contact-info">Address <em>Kahawa Wendani
                                         Nairobi, Kenya</em></span><br><span class="contact-info">Phone <em>+254 72915 7788</em></span><br><span class="contact-info">Email <a href="#"><em>info@tyondo.com</em></a></span></p>
                                     <p><span class="contact-info">Monday to Friday <em>9.00 am to 12.00 pm</em></span><br><span class="contact-info">Saturday from <em>9.00 am to 12.00 pm</em></span></p>
@@ -64,13 +66,14 @@
                         </div>
                         <div class="col-md-6 padding-leftright-null">
                             <div class="text padding-md-top-null">
-                                <form id="contact-form" class="padding-md padding-md-topbottom-null">
+                                <form action="{{ url('blog') }}" method="post" id="contact-form" class="padding-md padding-md-topbottom-null">
+                                  {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-4">
                                             <input class="form-field" name="name" id="name" type="text" placeholder="Name">
                                         </div>
                                         <div class="col-md-4">
-                                            <input class="form-field" name="mail" id="mail" type="text" placeholder="Email">
+                                            <input class="form-field" name="email" id="mail" type="text" placeholder="Email">
                                         </div>
                                         <div class="col-md-4">
                                             <input class="form-field" name="subjectForm" id="subjectForm" type="text" placeholder="Subject">
