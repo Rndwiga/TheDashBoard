@@ -4,17 +4,17 @@
       @if (Auth::user()->can_post())
         <li class="">
             <a href="{{ url('Posts/create') }}" class="{{ isset($css->createPosts) ? $css->createPosts : '' }}">
-                <i class="fa fa-inbox"></i> Create Post <span class="badge badge-primary pull-right">6</span>
+                <i class="fa fa-inbox"></i> Create Post
             </a>
         </li>
         <li class="">
             <a href="{{ url('Posts/userPosts') }}" class="{{ isset($css->publishedPosts) ? $css->publishedPosts : '' }}">
-                <i class="fa fa-send-o"></i> Published Post <span class="badge badge-purple pull-right">10</span>
+                <i class="fa fa-send-o"></i> Published Post <span class="badge badge-purple pull-right">{{ isset($posts) ? $posts->count() : '' }}</span>
             </a>
         </li>
         <li class="">
             <a href="{{ url('Posts/userDrafts') }}" class="{{ isset($css->draftPosts) ? $css->draftPosts : '' }}">
-                <i class="fa fa-edit"></i> Drafts <span class="badge badge-orange pull-right">2</span>
+                <i class="fa fa-edit"></i> Drafts <span class="badge badge-orange pull-right">{{ isset($posts) ? $posts->count() : '' }}</span>
             </a>
         </li>
         <li class="">

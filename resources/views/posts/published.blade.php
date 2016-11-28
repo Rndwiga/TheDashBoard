@@ -61,7 +61,7 @@
                                                           @foreach($posts as $post)
                                                             <tr>
                                                                 <td>
-                                                                  <a href="{{url("Posts/".$post->slug)}}">{!! str_limit($post->title, $limit = 25, $end = '..') !!}</a>
+                                                                  <a href="{{url('Posts/'.$post->slug)}}">{!! str_limit($post->title, $limit = 25, $end = '..') !!}</a>
                                                                 </td>
                                                                 <td>{{$post->created_at}}</td>
                                                                 <td>{{$post->updated_at}}</td>

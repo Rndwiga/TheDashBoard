@@ -85,7 +85,7 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
 
-        if($post)
+        if(!$post)
         {
           return redirect('/')->withErrors('Post not found');
         }

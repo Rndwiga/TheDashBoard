@@ -55,7 +55,7 @@
 
                                                 <div class="col-md-12 col-sm-12 col-xs-12 mail_view_title">
                                                 <!--  <form action="{{ url('Posts') }}" method="post" enctype="multipart/form-data"> -->
-                                                  <form action="{{ url('blog') }}" method="post" enctype="multipart/form-data">
+                                                  <form action="{{ url('Posts') }}" method="post" enctype="multipart/form-data">
                                                     {{ csrf_field() }}
                                                     <div class='pull-right'>
                                                         <button class="btn btn-default btn-icon" rel="tooltip" data-color-class="primary" data-animate=" animated fadeIn" data-toggle="tooltip" data-original-title="Send" data-placement="top">
