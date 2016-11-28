@@ -59,6 +59,15 @@
 											</p>
 									</div>
 							</div>
+							<div class="col-md-4 padding-leftright-null">
+									<div class="text">
+											<i class="icon ion-ios-cart-outline service color"></i>
+											<h6 class="heading white margin-bottom-extrasmall">API Development</h6>
+											<p class="margin-bottom-null grey-light">
+													Tyondo utilizes web development technologies that are both proven and practicle. With the options available in the market today, we can help you determine what is best for your API needs.
+											</p>
+									</div>
+							</div>
 								<div class="col-md-4 padding-leftright-null">
 										<div class="text padding-md-bottom-null">
 												<i class="icon ion-ios-pulse service color"></i>
@@ -97,15 +106,7 @@
 												</p>
 										</div>
 								</div>
-								<div class="col-md-4 padding-leftright-null">
-										<div class="text">
-												<i class="icon ion-ios-cart-outline service color"></i>
-												<h6 class="heading white margin-bottom-extrasmall">API Development</h6>
-												<p class="margin-bottom-null grey-light">
-														Tyondo utilizes web development technologies that are both proven and practicle. With the options available in the market today, we can help you determine what is best for your API needs.
-												</p>
-										</div>
-								</div>
+
 						</div>
 				</div>
 				<!-- END Services -->

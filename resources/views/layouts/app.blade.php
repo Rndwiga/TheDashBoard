@@ -61,7 +61,7 @@
         <div class='page-topbar'>
 
             <div>
-                    <a href="{{ url('/home') }}">
+                    <a href="{{ url('/') }}">
                         <span class='logo-area'></span>
                     </a>
             </div>
