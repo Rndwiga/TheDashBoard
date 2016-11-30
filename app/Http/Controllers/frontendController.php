@@ -74,6 +74,12 @@ class frontendController extends Controller
       {
         return abort(404);
       }
+      //improve posts page by adding meta description to each page. look at the commented out page
+      $meta = [
+                'title' => $post->title,
+              //  'description' => $post->excerpt,
+              //  'image' => '/images/small/'.$post->featuredimage,
+              ];
       $comments = $post->comment; //fetch post comments
     //  $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts');
       return view('frontend/v2/includes/show-blog', compact('post', 'comments'));
