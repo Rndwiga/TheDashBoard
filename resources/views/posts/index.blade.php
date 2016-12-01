@@ -58,7 +58,8 @@
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <i class="fa fa-tags"></i> <a href="#">responsive</a> <a href="#">web</a> <a href="#">mobile</a>
                                             </p>
-                                            <img class="media-object" src="{{ asset('data/blog.png') }}" alt="">
+                                          <!--  <img class="media-object" src="{{ asset('data/blog.png') }}" alt=""> -->
+                                            <img class="media-object" src="{{isset($post->featuredImage) ? asset($post->featuredImage) : asset('data/blog.png')  }}" alt="">
                                             <p class="blog-content">
                                               {!! str_limit(strip_tags($post->body), $limit = 400, $end = '....... <a href='.url("Posts/".$post->slug).'>Read More</a>') !!}
 

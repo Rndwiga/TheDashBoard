@@ -55,8 +55,10 @@
 
                                                 <div class="col-md-12 col-sm-12 col-xs-12 mail_view_title">
                                                 <!--  <form action="{{ url('Posts') }}" method="post" enctype="multipart/form-data"> -->
-                                                  <form action="{{ url('Posts') }}" method="post" enctype="multipart/form-data">
+                                                  <form action="{{ url('Posts/'. $post->id ) }}" method="post" enctype="multipart/form-data">
                                                     {{ csrf_field() }}
+                                                    <input name="_method" type="hidden" value="patch">
+                                                    <input name="post_id" type="hidden" value="{{$post->id}}">
                                                     <div class='pull-right'>
                                                         <button class="btn btn-default btn-icon" rel="tooltip" data-color-class="primary" data-animate=" animated fadeIn" data-toggle="tooltip" data-original-title="Send" data-placement="top">
                                                             <i class="fa fa-paper-plane-o icon-xs"></i>
@@ -78,6 +80,11 @@
                                                         <span class="desc">e.g. "Meeting in 1st week"</span>
                                                         <div class="controls">
                                                             <input type="text" name="title" class="form-control" value="{{ $post->title }}" />
+                                                        </div>
+                                                        <label class="form-label" for="field-1">Feature Image:</label>
+                                                        <span class="desc">e.g. "Meeting in 1st week"</span>
+                                                        <div class="controls">
+                                                            <input type="file" name="featuredImage" class="form-control" value="{{ $post->featuredImage }}" required=""/>
                                                         </div>
                                                     </div>
 

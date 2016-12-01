@@ -75,9 +75,13 @@
 
                                                     <div class="form-group">
                                                         <label class="form-label" for="field-1">Title:</label>
+                                                        <div class="controls">
+                                                            <input type="text" name="title" class="form-control" value="{{ old('title') }}" required=""/>
+                                                        </div>
+                                                        <label class="form-label" for="field-1">Feature Image:</label>
                                                         <span class="desc">e.g. "Meeting in 1st week"</span>
                                                         <div class="controls">
-                                                            <input type="text" name="title" class="form-control" value="{{ old('title') }}" />
+                                                            <input type="file" name="featuredImage" class="form-control" value="{{ old('featuredImage') }}" required=""/>
                                                         </div>
                                                     </div>
 

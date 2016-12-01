@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Comment;
 use App\User;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PostController extends Controller
 {
@@ -58,7 +59,9 @@ class PostController extends Controller
 
         $post = new Post;
         $post->title = $request->get('title');
-        $post->body = $request->get('body');
+        //$post->body = $request->get('body');
+        $post->body = $this->summernoteImageProcessor($request);
+        $post->featuredImage = $this->featuredImage($request);
         $post->slug = str_slug($post->title);
         $post->author_id = $request->user()->id;
           if($request->has('save'))
@@ -69,11 +72,61 @@ class PostController extends Controller
             $post->active = 1;
             $message = 'Post Published';
           }
-      //  return $post . '<br>' . $message;
         $post->save();
+
         return redirect('Posts/'. $post->slug .'/edit');
-      //  return redirect('edit/'. $post->slug)->withMessage($message);
     }
+    public function featuredImage($request)
+    {
+
+        $filename = uniqid();
+        $mimetype = $request->file('featuredImage')->getClientOriginalExtension();
+      //  $filepath = "/public/assets/images/postImages/$filename.$mimetype";
+        $filepath = "assets\images\postFeaturedImages\\$filename.$mimetype" ;
+        // @see http://image.intervention.io/api/
+          $image = Image::make($request->file('featuredImage'))
+              ->fit(800, 250)
+              ->save(public_path($filepath));
+        return $filepath;
+    }
+    public function summernoteImageProcessor($request){
+            $message = $request->input('body'); // Summernote input field
+            $dom = new \DOMDocument();
+            $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $images = $dom->getElementsByTagName('img');
+
+            if(!empty($images))
+            {
+              // foreach <img> in the submited message
+              foreach($images as $img){
+                $src = $img->getAttribute('src');
+                // if the img source is 'data-url'
+                if(preg_match('/data:image/', $src)){
+                  // get the mimetype
+                  preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                  $mimetype = $groups['mime'];
+
+                  // Generating a random filename
+                  $filename = uniqid();
+                  $filepath = "/assets/images/postImages/$filename.$mimetype";
+
+                  // @see http://image.intervention.io/api/
+                  $image = Image::make($src)
+                    ->encode($mimetype, 100) 	// encode file to the specified mimetype
+                    ->save(public_path($filepath));
+
+                  $new_src = asset($filepath);
+                  $img->removeAttribute('src');
+                  $img->setAttribute('src', $new_src);
+                } // <!--endif
+              } // <!--endforeach
+              //Session::flash('message','Post updated!');
+              return $dom->saveHTML();
+            }else {
+              //Session::flash('message','Post updated!');
+              return $request->get('body');
+            }
+  }
 
     /**
      * Display the specified resource.
@@ -132,13 +185,18 @@ class PostController extends Controller
               //checking duplicate post title
               if($duplicate->id != $request->get('post_id'))
               {
-                return redirect('edit/'. $post->slug)->withErrors('Title already exists');
-              }else {
+                //$post->slug = $slug; //if title exist
                 $post->slug = $slug;
+                $post->title = $title;
+              }else {
+              //  $post->slug = $slug;
+              //  $post->title = $title;
               }
             }
-            $post->title = $title;
-            $post->body = $request->get('body');
+            //echo "string";
+          //  exit;
+            $post->body = $this->summernoteImageProcessor($request);
+            $post->featuredImage = $this->featuredImage($request);
             if($request->has('save'))
             {
               $post->active = 0;
@@ -149,9 +207,7 @@ class PostController extends Controller
               $message = 'Post updated successfully';
               $landing = $post->slug;
             }
-            $post->save();
-
-            return redirect($landing)->withMessage($message);
+            return redirect('Posts/'. $post->slug .'/edit');
         }else {
           return redirect('/')->withErrors('You dont have the right to edit this post.' );
         }

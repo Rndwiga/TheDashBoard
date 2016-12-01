@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "php-imap/php-imap": "~2.0",
         "consoletvs/charts": "3.*",
-        "irazasyed/telegram-bot-sdk": "^2.0"
+        "irazasyed/telegram-bot-sdk": "^2.0",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
