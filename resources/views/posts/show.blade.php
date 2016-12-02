@@ -56,6 +56,7 @@
                                             <div class="blog-content">
                                               @if($post)
                                                   <div>
+                                                    <img class="media-object" src="{{isset($post->featuredImage) ? asset($post->featuredImage) : asset('data/blog.png')  }}" alt="">
                                                     {!! $post->body !!}
                                                   </div>
                                                   <form action="{{ $post->id }}" method="POST" class="pull-left">

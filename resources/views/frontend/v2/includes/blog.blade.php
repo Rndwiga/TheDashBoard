@@ -26,8 +26,12 @@
                             @foreach($posts as $post)
                                 <div class="single-news one-item">
                                     <article>
-                                      <!--  <img src="{{asset('frontend/assets/img/news1.jpg')}}" alt=""> -->
-                                      <br/> <!--remove this after activating the image-->
+                                      @if(empty($post->featuredImage))
+          														<!--	<img src="{{asset('frontend/assets/img/news1.jpg')}}" alt=""> -->
+          															<br/> <!--remove this after activating the image-->
+          														@else
+          														<img src="{{asset($post->featuredImage)}}" alt="">
+          														@endif
                                         <div class="content">
                                             <span class="read">
                                                 <i class="material-icons">subject</i>

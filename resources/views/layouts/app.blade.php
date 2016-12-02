@@ -9,7 +9,7 @@
         -->
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta content="description" name="Laravel 5.3 admin interface" />
         <meta content="author" name="Raphael Ndwiga" />
@@ -61,7 +61,7 @@
         <div class='page-topbar'>
 
             <div>
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('/') }}" target="_blank">
                         <span class='logo-area'></span>
                     </a>
             </div>

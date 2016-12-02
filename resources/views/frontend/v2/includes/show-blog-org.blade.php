@@ -23,7 +23,7 @@
                             <span class="category">Social</span>
                             <span class="date">02.11.2016</span>
                             <p class="heading full black left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita distinctio sed harum ea, tenetur ratione ab quod quaerat voluptatem nam fugiat perferendis, unde, autem deleniti.</p>
-                        </div>
+                        </div> 
                         <div class="col-md-offset-2 col-md-8 padding-leftright-null">
                             <img class="img-responsive padding-md" src="assets/img/news2.jpg" alt="">
                         </div>
