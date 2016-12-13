@@ -82,9 +82,8 @@
                                                             <input type="text" name="title" class="form-control" value="{{ $post->title }}" />
                                                         </div>
                                                         <label class="form-label" for="field-1">Feature Image:</label>
-                                                        <span class="desc">e.g. "Meeting in 1st week"</span>
                                                         <div class="controls">
-                                                            <input type="file" name="featuredImage" class="form-control" value="{{ $post->featuredImage }}" required=""/>
+                                                            <input type="file" name="featuredImage" class="form-control" value="{{asset($post->featuredImage)}}" required=""/>
                                                         </div>
                                                     </div>
 

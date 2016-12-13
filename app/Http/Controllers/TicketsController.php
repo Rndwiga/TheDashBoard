@@ -20,38 +20,14 @@ class TicketsController extends Controller
      */
     public function index()
     {
-    //  return 'texter';
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-
-        $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-          if($isProfileSet == NULL)
-          {
-              $user = User::find(Auth::user()->id); //fetching basic user info
-              $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-              $categories = TicketCategory::all();
-              return view('tickets.index', compact( 'user'));
-          }else {
-            $categories = TicketCategory::all();
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            return view('tickets.index', compact( 'user', 'categories'));
-          }
+      $categories = TicketCategory::all();
+      return view('tickets.index', compact( 'user', 'categories'));
     }
     public function userTickets()
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-          if($user->userProfile == NULL)
-          {
-              $user = User::find(Auth::user()->id); //fetching basic user info
-              $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-              $categories = TicketCategory::all();
-              $tickets = Ticket::where('user_id', Auth::user()->id);
-              return view('tickets.index', compact( 'user', 'tickets', 'categories'));
-          }else {
-            $categories = TicketCategory::all();
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            $tickets = Ticket::where('user_id', Auth::user()->id);
-            return view('tickets.index', compact( 'user', 'categories'));
-          }
+      $categories = TicketCategory::all();
+      $tickets = Ticket::where('user_id', Auth::user()->id);
+      return view('tickets.index', compact('categories'));
     }
 
     /**
@@ -61,19 +37,8 @@ class TicketsController extends Controller
      */
     public function create()
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-        $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-          if($isProfileSet == NULL)
-          {
-              $user = User::find(Auth::user()->id); //fetching basic user info
-              $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-              $categories = TicketCategory::all();
-              return view('tickets.create', compact( 'user'));
-          }else {
-            $categories = TicketCategory::all();
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            return view('tickets.create', compact( 'user', 'categories'));
-          }
+      $categories = TicketCategory::all();
+      return view('tickets.create', compact('categories'));
     }
 
     /**

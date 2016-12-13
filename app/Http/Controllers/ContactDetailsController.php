@@ -19,24 +19,10 @@ class ContactDetailsController extends Controller
      */
     public function index()
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-        $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-          if($isProfileSet == NULL)
-          {   //Link Items
-              $user = User::find(Auth::user()->id); //fetching basic user info
-              $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-              //Inventory Items
-              $contacts = Contact::all();
-            //  $items = Inventory::select(['id', 'asset_serial', 'asset_tag', 'asset_user', 'asset_location'])->get();
-              $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'contacts'=> 'contacts');
-              return view('contacts.index', compact( 'user', 'css', 'contacts'));
-          }else {
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            $contacts = Contact::all();
-          //  $items = Inventory::select(['id', 'asset_serial', 'asset_tag', 'asset_user', 'asset_location'])->get();
-            $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'contacts'=> 'contacts');
-              return view('contacts.index', compact( 'user', 'css', 'contacts'));
-          }
+      $contacts = Contact::all();
+      $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'contacts'=> 'contacts');
+        return view('contacts.index', compact('css', 'contacts'));
+
     }
 
     /**
@@ -108,26 +94,10 @@ class ContactDetailsController extends Controller
      */
     public function edit($id)
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-      $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-        if($isProfileSet == NULL)
-        {   //Link Items
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-            //Inventory Items
-            $contacts = Contact::all();
-            $sContact = Contact::find($id);
-          //  $items = Inventory::select(['id', 'asset_serial', 'asset_tag', 'asset_user', 'asset_location'])->get();
-            $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'contacts'=> 'contacts');
-            return view('contacts.edit', compact( 'user', 'css', 'contacts', 'sContact'));
-        }else {
-          $user = User::find(Auth::user()->id); //fetching basic user info
           $contacts = Contact::all();
           $sContact = Contact::find($id);
-        //  $items = Inventory::select(['id', 'asset_serial', 'asset_tag', 'asset_user', 'asset_location'])->get();
           $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'contacts'=> 'contacts');
-        //  return $sContact;
-            return view('contacts.edit', compact( 'user', 'css', 'contacts', 'sContact'));
+            return view('contacts.edit', compact('css', 'contacts', 'sContact'));
         }
     }
 

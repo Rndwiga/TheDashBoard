@@ -10,7 +10,9 @@
         "php-imap/php-imap": "~2.0",
         "consoletvs/charts": "3.*",
         "irazasyed/telegram-bot-sdk": "^2.0",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "laravelcollective/html": "5.3.*",
+        "cviebrock/eloquent-sluggable": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

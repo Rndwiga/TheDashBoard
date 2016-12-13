@@ -40,6 +40,7 @@
                             <div class="content-body">    <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         Your content goes here
+                                        
                                     </div>
                                 </div>
                             </div>

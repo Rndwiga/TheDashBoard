@@ -18,22 +18,9 @@ class InventoryController extends Controller
      */
     public function index()
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-      $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-        if($isProfileSet == NULL)
-        {   //Link Items
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-            //Inventory Items
-            $items = Inventory::select(['id', 'asset_serial', 'asset_tag', 'asset_user', 'asset_location'])->get();
-            $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'inventory'=> 'inventory');
-            return view('inventory.index', compact( 'user', 'items', 'css'));
-        }else {
-          $user = User::find(Auth::user()->id); //fetching basic user info
           $items = Inventory::select(['id', 'asset_serial', 'asset_tag', 'asset_user', 'asset_location'])->get();
           $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'inventory'=> 'inventory');
-            return view('inventory.index', compact( 'user', 'items', 'css'));
-        }
+          return view('inventory.index', compact('items', 'css'));
     }
 
     /**
@@ -43,20 +30,8 @@ class InventoryController extends Controller
      */
     public function create()
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-      $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-        if($isProfileSet == NULL)
-        {
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-            $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'inventory'=> 'inventory');
-            return view('inventory.create', compact('user', 'css'));
-        }else {
-          $user = User::find(Auth::user()->id); //fetching basic user info
-          $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'inventory'=> 'inventory');
-          //return $item;
-            return view('inventory.create', compact('user', 'css'));
-        }
+      $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'inventory'=> 'inventory');
+        return view('inventory.create', compact('css'));
     }
 
     /**
@@ -128,21 +103,9 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-      $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-        if($isProfileSet == NULL)
-        {
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-            $item = Inventory::find($id);
-            $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'inventory'=> 'inventory');
-            return view('inventory.edit', compact( 'user', 'item', 'css'));
-        }else {
-          $user = User::find(Auth::user()->id); //fetching basic user info
           $item = Inventory::find($id);
           $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'inventory'=> 'inventory');
-            return view('inventory.edit', compact( 'user', 'item', 'css'));
-        }
+            return view('inventory.edit', compact('item', 'css'));
     }
 
     /**

@@ -40,7 +40,7 @@
                     </p>
                     <p>
                         <label for="user_login">Username<br />
-                            <input type="text" name="log" id="user_login" class="input" value="" size="20" /></label>
+                            <input type="text" name="username" id="user_login" class="input" value="" size="20" /></label>
                     </p>
                     <p>
                         <label for="user_pass">Password<br />

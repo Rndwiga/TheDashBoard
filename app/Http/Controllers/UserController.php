@@ -22,19 +22,8 @@ class UserController extends Controller
      }
     public function index()
     {
-      $user = User::with(['userProfile'])->find(Auth::user()->id);
-        $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-          if($isProfileSet == NULL)
-          {
-              $user = User::find(Auth::user()->id); //fetching basic user info
-              $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-              $users = User::all();
-              return view('users.index', compact('user', 'users'));
-          }else {
-            $user = User::find(Auth::user()->id); //fetching basic user info
-            $users = User::all();
-            return view('users.index', compact('users', 'user'));
-          }
+      $users = User::all();
+      return view('users.index', compact('users'));
 
     }
 
@@ -251,8 +240,6 @@ class UserController extends Controller
              return redirect('/users/'. $user->user_id .'/edit');
            }
         }
-
-
     }
 
     /**
