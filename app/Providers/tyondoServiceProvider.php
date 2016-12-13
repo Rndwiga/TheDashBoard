@@ -28,8 +28,6 @@ class tyondoServiceProvider extends ServiceProvider
             {
                 $user = User::find(Auth::user()->id); //fetching basic user info
                 $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-              //  return view('home')->with('user', $user);
-
                 $view->with('user', $user);
             }else {
                 //return view('home')->with('user', $user);
