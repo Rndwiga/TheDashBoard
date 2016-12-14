@@ -10,21 +10,15 @@
 |
 */
 //Landing page
-Route::get('/', 'frontendController@index');
-Route::resource('blog', 'frontendController');
-Route::get('/about', function () {
-    return view('frontend/v2/includes/about'); //about
-});
-Route::get('/blog', 'frontendController@showBlog'); //blog
-Route::get('/services', function () {
-   return view('frontend/v2/includes/services'); //serv
-});
-Route::get('/contact', function () {
-   return view('frontend/v2/includes/contact'); //contact
-});
-Route::get('/elements', function () {
-    return view('frontend/v2/includes/elements'); //elements
-});
+Route::get('/', 'frontendController@index')->name('home');
+Route::get('/about', function () {return view('frontend/v2/includes/about');})->name('about');//about
+Route::get('/services', function () {return view('frontend/v2/includes/services');})->name('services'); //services
+Route::get('/contact', function () {return view('frontend/v2/includes/contact');})->name('tyondo.contactUs'); //contact
+Route::get('/elements', function () {return view('frontend/v2/includes/elements');}); //elements
+Route::get('/posts', 'frontendController@showBlog')->name('posts'); //blog
+Route::get('/post/{slug}', 'frontendController@show')->name('blog.post.show'); // single blog
+Route::resource('ContactUs', 'frontendController');
+
 
 //Authorization and registration
 Auth::routes();

@@ -174,7 +174,7 @@
 												<h3 class="grey big margin-bottom-small">Latest Posts. Stay tuned!</h3>
 												<p class="heading left margin-bottom grey">We share daily the latest technology trends and tutorials on how perfect
 												your web development project.</p>
-												<a href="{{ url('/blog') }}" class="btn-alt active shadow small margin-null">Read all news</a>
+												<a href="{{route('posts')}}" class="btn-alt active shadow small margin-null">Read all news</a>
 										</div>
 								</div>
 						</div>
@@ -184,12 +184,7 @@
 									@foreach($posts as $post)
 											<div class="col-sm-6 single-news">
 													<article>
-														@if(empty($post->featuredImage))
-														<!--	<img src="{{asset('frontend/assets/img/news1.jpg')}}" alt=""> -->
-															<br/> <!--remove this after activating the image-->
-														@else
-														<img src="{{asset($post->featuredImage)}}" alt="">
-														@endif
+														<img src="{{asset($post->photo->file)}}" alt="">
 															<div class="content">
 																	<span class="read">
 																			<i class="material-icons">subject</i>
@@ -199,11 +194,11 @@
 																	<span class="category">Social</span>
 																	<span class="date">{{ $post->created_at->format('M d,Y \a\t h:i a') }}</span>
 																	<p>
-																		{!! str_limit(strip_tags($post->body), $limit = 100, $end = '....... <a href='.url("/blog/".$post->slug).'>Read More</a>') !!}
+																		{!! str_limit(strip_tags($post->body), $limit = 100, $end = '....... <a href='.route("blog.post.show", $post->slug).'>Read More</a>') !!}
 
 																	</p>
 															</div>
-															<a href="{{url('blog/'.$post->slug)}}" class="link"></a>
+															<a href="{{route('blog.post.show', $post->slug)}}" class="link"></a>
 													</article>
 											</div>
 										@endforeach
@@ -242,7 +237,7 @@
 				<div class="row padding-md margin-leftright-null dark-background">
 						<div class="col-md-12 text-center">
 								<h4 class="big margin-bottom-small white">Get the premium digital services</h4>
-								<a href="{{ url('/contact') }}" target="_blank" class="btn-alt small white margin-null active">Get Intouch</a>
+								<a href="{{route('tyondo.contactUs')}}" target="_blank" class="btn-alt small white margin-null active">Get Intouch</a>
 						</div>
 				</div>
 		</div>

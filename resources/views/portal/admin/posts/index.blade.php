@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-3 col-sm-12 col-xs-12">
         <nav class='pull-right'>
-      <!--<ul class="pager" style="margin:0px;">
+      <!--<ul class="pager"  style="margin:0px;">
             <li><a href="#"><i class='fa fa-arrow-left icon-xs icon-orange icon-secondary'></i></a></li>
             <li><a href="#"><i class='fa fa-arrow-right icon-xs icon-orange icon-secondary'></i></a></li>
           </ul> -->

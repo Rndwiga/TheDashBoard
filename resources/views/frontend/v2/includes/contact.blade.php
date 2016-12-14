@@ -7,6 +7,7 @@
                     <ul class="slides">
                         <li style="background-image:url({{asset('frontend/assets/img/contact.jpg')}})">
                             <div class="text text-center">
+                              @include('frontend.v2.partials.flash')
                                 <h1 class="white margin-bottom-small">Contact</h1>
                                 <p class="heading white">Get intouch with us.</p>
                             </div>
@@ -66,7 +67,7 @@
                         </div>
                         <div class="col-md-6 padding-leftright-null">
                             <div class="text padding-md-top-null">
-                                <form action="{{ url('blog') }}" method="post" id="contact-form" class="padding-md padding-md-topbottom-null">
+                                <form action="{{ url('ContactUs') }}" method="post" id="contact-form" class="padding-md padding-md-topbottom-null">
                                   {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-4">

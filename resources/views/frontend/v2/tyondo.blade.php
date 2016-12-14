@@ -73,13 +73,13 @@
                         <div class="menu-holder">
                             <ul>
                                 <li class="submenu">
-                                    <a href="{{ url('/') }}" class="active-item">Home</a>
+                                    <a href="{{ route('home') }}" class="active-item">Home</a>
                                 </li>
                                 <li class="submenu">
-                                    <a href="{{ url('/about') }}">About</a>
+                                    <a href="{{ route('about') }}">About</a>
                                 </li>
                                 <li class="submenu">
-                                    <a href="{{ url('/blog') }}">Blog</a>
+                                    <a href="{{ route('posts') }}">Blog</a>
                                 </li>
 																@if (!Auth::guest())
                                 <li class="submenu">

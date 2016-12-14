@@ -9,6 +9,7 @@ use App\Post;
 use App\Comment;
 use App\User;
 use App\Contact as ContactUs;
+use App\Notifications\contactUsNotification;
 
 class frontendController extends Controller
 {
@@ -19,7 +20,7 @@ class frontendController extends Controller
      */
     public function index()
     {
-      //$posts = Post::where('active',1)->orderBy('created_at','desc')->take(2)->get();
+      $posts = Post::where('status',2)->orderBy('created_at','desc')->take(2)->get();
       return view('frontend/v2/includes/index', compact('posts')); //index
     }
 
@@ -41,23 +42,11 @@ class frontendController extends Controller
      */
     public function store(Request $request)
     {
-      //  return $request;
-        //  return $request;
-            $this->validate($request, [
-                  'name' => 'max:255',
-                  'email' => 'max:255',
-                  'subjectForm' => 'max:255',
-                  'messageForm' => 'max:255',
-              ]);
-
-              $contact = new ContactUs;
-              $contact->name = $request->get('name');
-              $contact->email = $request->get('email');
-              $contact->subjectForm = $request->get('subjectForm');
-              $contact->messageForm = $request->get('messageForm');
-              //return $contact;
-              $contact->save();
-            return redirect('/');
+        $users = User::all();
+                      foreach ($users as $user) {
+                        $user->notify(new contactUsNotification($request));
+                      }
+            return back()->with('contactMessageSent', 'hello');
     }
 
     /**
@@ -69,24 +58,23 @@ class frontendController extends Controller
     public function show($slug)
     {
       $post = Post::where('slug', $slug)->first();
-    //  return $slug . '  ' . $post;
       if(!$post)
       {
         return abort(404);
       }
-      //improve posts page by adding meta description to each page. look at the commented out page
       $meta = [
                 'title' => $post->title,
-              //  'description' => $post->excerpt,
+                'description' => $post->summary,
               //  'image' => '/images/small/'.$post->featuredimage,
               ];
       $comments = $post->comment; //fetch post comments
-    //  $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts');
-      return view('frontend/v2/includes/show-blog', compact('post', 'comments'));
+      return view('frontend/v2/includes/show-blog', compact('post', 'comments','meta'));
     }
     public function showBlog()
     {
-        $posts = Post::where('active', 1)->orderBy('created_at', 'desc')->get();
+    //  $posts = Post::paginate(2);
+      //  $posts = Post::where('status', 2)->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('status', 2)->orderBy('created_at', 'desc')->simplePaginate(6);
         return view('frontend/v2/includes/blog', compact('posts'));
     }
 

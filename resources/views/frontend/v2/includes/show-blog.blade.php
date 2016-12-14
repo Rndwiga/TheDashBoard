@@ -26,11 +26,9 @@
                                 {!! $post->body !!}
                             </div>
                         </div>
-                        @if(!empty($post->featuredImage))
-                          <div class="col-md-offset-2 col-md-8 padding-leftright-null">
-                              <img class="img-responsive padding-md" src="{{asset($post->featuredImage)}}" alt="">
-                          </div>
-                        @endif
+                        <div class="col-md-offset-2 col-md-8 padding-leftright-null">
+                            <img class="img-responsive padding-md" src="{{asset($post->photo->file)}}" alt="">
+                        </div>
 
                     </div>
                     <!--  Post Meta

@@ -60,6 +60,7 @@ class AdminPostController extends Controller
           $photo = Photo::create(['file'=> $name]);
 
           $input['photo_id'] = $photo->id;
+          $input['slug'] = str_slug($request->input('title')) .'-'.time();
         }
         $user->posts()->create($input);
         Session::flash('message', 'Post Created');
@@ -112,6 +113,7 @@ class AdminPostController extends Controller
         $photo = Photo::create(['file'=> $name]);
 
         $input['photo_id'] = $photo->id;
+        $input['slug'] = str_slug($request->input('title')) .'-'.time();
       }
       Auth::user()->posts()->whereId($id)->first()->update($input);
       Session::flash('message', 'The Post: -- ' . ucfirst($input['title']) . ' --- has been updated :-)' );
