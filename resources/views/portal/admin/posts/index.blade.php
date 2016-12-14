@@ -14,10 +14,10 @@
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html"><i class="fa fa-home"></i>Home</a>
+                        <a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li>
-                        <a href="blo-blogs.html">Blogs</a>
+                        <a href="{{route('admin.posts.index')}}">Blogs</a>
                     </li>
                     <li class="active">
                         <strong>All Blogs</strong>
@@ -68,7 +68,7 @@
                         @if(isset($posts))
                           @foreach($posts as $post)
                           <div class="blog_post">
-                              <h3><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></h3>
+                              <h3><a href="{{route('admin.posts.show', $post->id)}}">{{$post->title}}</a></h3>
                               <h5>Written by <a href="#">{{$post->user->name}}</a> on {{$post->created_at->diffForHumans()}}.</h5>
                               <p class="blog_info">
                                   <i class="fa fa-comment"></i> <a href="#comments">3 comments</a>
@@ -76,14 +76,14 @@
                                   <i class="fa fa-tags"></i> <a href="#">responsive</a> <a href="#">web</a> <a href="#">mobile</a>
                                   &nbsp;&nbsp;&nbsp;&nbsp;
                                   <i class="fa fa-newspaper-o"></i>
-                                    <a href="#">{{ $post->category ? $post->category->name  : 'Uncategorized' }}</a>
+                                    <a href="#">{{$post->category->name}}</a>
                                     <a href="#">web</a>
                               </p>
-                              <img class="" style="max-width: 800px;height: auto;width:100%;margin:30px 0;" src="{!! $post->photo ? asset($post->photo->file)  : asset('data/blogs/blog-1.jpg') !!}" alt="">
+                              <img class="" style="max-width: 800px;height: auto;width:100%;margin:30px 0;" src="{{asset($post->photo->file)}}" alt="">
                               <p class="blog-content">
                                   <?php print_r(str_limit($post->body, 40));?>
                               </p>
-                              <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-primary"><span>Read more</span>  &nbsp; <i class="fa fa-angle-double-right"></i></a>
+                              <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary"><span>Read more</span>  &nbsp; <i class="fa fa-angle-double-right"></i></a>
                           </div>
                           @endforeach
                         @endif

@@ -19,10 +19,10 @@
               <div class="pull-right hidden-xs">
                   <ol class="breadcrumb">
                       <li>
-                          <a href="index.html"><i class="fa fa-home"></i>Home</a>
+                          <a href="{{ url('/home') }}"><i class="fa fa-home"></i>Home</a>
                       </li>
                       <li>
-                          <a href="blo-categories.html">Users</a>
+                          <a href="{{route('admin.users.index')}}">Users</a>
                       </li>
                       <li class="active">
                           <strong>All Users</strong>

@@ -8,7 +8,7 @@ class Post extends Model
 {
     protected $fillable = [
 			'category_id', 'photo_id', 'title',
-			'body',
+			'body', 'status',
 		];
 
 		public function user()

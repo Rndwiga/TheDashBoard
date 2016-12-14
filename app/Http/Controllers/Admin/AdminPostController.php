@@ -76,7 +76,8 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('portal.admin.posts.show', compact('post'));
     }
 
     /**

@@ -17,10 +17,10 @@
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html"><i class="fa fa-home"></i>Home</a>
+                        <a href="{{ url('/home') }}"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li>
-                        <a href="blo-blogs.html">Blogs</a>
+                        <a href="{{route('admin.posts.index')}}">Blogs</a>
                     </li>
                     <li class="active">
                         <strong>Add Blog</strong>
@@ -117,16 +117,9 @@
                                 <div class="form-group">
                                     <label class="form-label" for="field-5">Blog Status</label>
                                     <span class="desc"></span>
-                                    <select class="form-control">
-                                        <option></option>
-                                        <option >New</option>
-                                        <option>Draft</option>
-                                        <option>Published</option>
-                                    </select>
+                                    {{Form::select('status', ['1' => 'Draft', '2' => 'Published'], null, ['placeholder' => 'Select Status', 'class' => 'form-control'])}}
                                 </div>
                             </div>
-
-
                             <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                                 <div class="text-left">
                                     <button type="submit" class="btn btn-primary col-sm-4 col-xs-4">Save</button>

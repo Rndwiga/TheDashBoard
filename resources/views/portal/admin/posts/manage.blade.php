@@ -13,18 +13,19 @@
           <div class="page-title">
 
               <div class="pull-left">
-                  <h1 class="title">Categories</h1>                            </div>
+                  <h1 class="title">My Blogs</h1>
+              </div>
 
               <div class="pull-right hidden-xs">
                   <ol class="breadcrumb">
                       <li>
-                          <a href="index.html"><i class="fa fa-home"></i>Home</a>
+                          <a href="{{ url('/home') }}"><i class="fa fa-home"></i>Home</a>
                       </li>
                       <li>
-                          <a href="blo-categories.html">Categories</a>
+                          <a href="{{route('admin.posts.index')}}">Blogs</a>
                       </li>
                       <li class="active">
-                          <strong>All Categories</strong>
+                          <strong>All Blogs</strong>
                       </li>
                   </ol>
               </div>
@@ -36,7 +37,7 @@
       <div class="col-lg-12">
           <section class="box ">
               <header class="panel_header">
-                  <h2 class="title pull-left">All Categories</h2>
+                  <h2 class="title pull-left">All Blogs</h2>
                   <div class="actions panel_actions pull-right">
                       <i class="box_toggle fa fa-chevron-down"></i>
                       <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>

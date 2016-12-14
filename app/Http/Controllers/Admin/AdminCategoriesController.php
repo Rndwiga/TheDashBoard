@@ -38,6 +38,7 @@ class AdminCategoriesController extends Controller
      */
     public function store(Request $request)
     {
+      //$post->slug = str_slug($post->title);
         Category::create($request->all());
         Session::flash('message', 'New Category created');
         return redirect('/admin/categories/');

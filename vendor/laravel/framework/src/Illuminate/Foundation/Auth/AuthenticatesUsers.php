@@ -109,7 +109,7 @@ trait AuthenticatesUsers
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user
-     * @return mixed
+     * @return mixed 
      */
     protected function authenticated(Request $request, $user)
     {

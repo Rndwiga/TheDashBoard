@@ -84,6 +84,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         $user = $this->create($request->all());
+        auth()->logout();
         $this->userActivationLibrary->sendActivationMail($user);
         return redirect('/login')->with('activationStatus', true);
     }

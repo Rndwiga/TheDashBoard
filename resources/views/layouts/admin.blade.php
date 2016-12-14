@@ -10,16 +10,11 @@
         <meta content="author" name="Raphael Ndwiga" />
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />    <!-- Favicon -->
         <link rel="apple-touch-icon-precomposed" href="assets/images/apple-touch-icon-57-precomposed.png">	<!-- For iPhone -->
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/apple-touch-icon-114-precomposed.png">    <!-- For iPhone 4 Retina display -->
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/apple-touch-icon-72-precomposed.png">    <!-- For iPad -->
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/apple-touch-icon-144-precomposed.png">    <!-- For iPad Retina display -->
-
-
-
-
         <!-- CORE CSS FRAMEWORK - START -->
         <link href="{{ asset('assets/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css" media="screen"/>
         <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css ') }}" rel="stylesheet" type="text/css"/>
@@ -28,12 +23,9 @@
         <link href="{{ asset('assets/css/animate.min.css ') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css ') }}" rel="stylesheet" type="text/css"/>
         <!-- CORE CSS FRAMEWORK - END -->
-
         <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
           @yield('otherCSS')
         <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
-
-
         <!-- CORE CSS TEMPLATE - START -->
         <link href="{{ asset('assets/css/style.css ') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('assets/css/responsive.css ') }}" rel="stylesheet" type="text/css"/>
@@ -91,7 +83,8 @@
                     </div>
                     <!-- USER INFO - END -->
                     <ul class='wraplist'>
-                        <li class="open">
+                      <!--  <li class="open"> -->
+                        <li class="">
                             <a href="{{ url('/home') }}">
                                 <i class="fa fa-dashboard"></i>
                                 <span class="title">Dashboard</span>
@@ -115,12 +108,6 @@
                                 </li>
                                 <li>
                                     <a class="" href="{{route('admin.posts.create')}}" >Add Blog</a>
-                                </li>
-                                <li>
-                                    <a class="" href="blo-blog-edit.html" >Edit Blog</a>
-                                </li>
-                                <li>
-                                    <a class="" href="blo-blog-view.html" >View Blog</a>
                                 </li>
                             </ul>
                         </li>
@@ -162,11 +149,11 @@
                         </li>
                         <li class="">
                             <a href="javascript:;">
-                                <i class="fa fa-sitemap"></i>
+                                <i class="fa fa-random"></i>
                                 <span class="title">User Roles</span>
                                 <span class="arrow "></span>
                             </a>
-                            <ul class="sub-menu" >
+                            <ul class="sub-menu">
                                 <li>
                                     <a class="" href="{{route('admin.roles.index')}}" >All Roles</a>
                                 </li>
@@ -208,12 +195,6 @@
                                 </li>
                                 <li>
                                     <a class="" href="{{route('admin.users.create')}}" >Add User</a>
-                                </li>
-                                <li>
-                                    <a class="" href="blo-user-edit.html" >Edit User</a>
-                                </li>
-                                <li>
-                                    <a class="" href="{{ action('UserController@show', Auth::user()->id) }}" >User Profile</a>
                                 </li>
                             </ul>
                         </li>
@@ -268,49 +249,10 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="">
-                            <a href="javascript:;">
-                                <i class="fa fa-suitcase"></i>
-                                <span class="title">Multi Purpose</span>
-                                <span class="arrow "></span><span class="label label-orange">NEW</span>
-                            </a>
-                            <ul class="sub-menu" >
-                                <li>
-                                    <a class="" href="general.html"  target = '_blank' >General Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="hospital.html"  target = '_blank' >Hospital Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="music.html"  target = '_blank' >Music Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="crm.html"  target = '_blank' >CRM Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="socialmedia.html"  target = '_blank' >Social Media Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="freelancing.html"  target = '_blank' >Freelancing Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="university.html"  target = '_blank' >University Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="ecommerce.html"  target = '_blank' >Ecommerce Admin</a>
-                                </li>
-                                <li>
-                                    <a class="" href="blog.html"  target = '_blank' >Blog Admin</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
 
                 </div>
                 <!-- MAIN MENU - END -->
-
-
-
                 <div class="project-info">
 
                     <div class="block1">
