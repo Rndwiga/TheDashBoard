@@ -314,7 +314,7 @@
                         <li class="profile">
                             <a href="#" data-toggle="dropdown" class="toggle">
                               @if(!empty($user))
-                                <img src="{{ asset($user->userProfile->profile_picture)}}" alt="user-image" class="img-circle img-inline">
+                                <img src="{{ asset($user->photo->file)}}" alt="user-image" class="img-circle img-inline">
                               @endif
                                 <span>{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></span>
                             </a>
@@ -326,7 +326,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ action('UserController@show', Auth::user()->id) }}">
+                                    <a href="{{route('admin.users.show', Auth::user()->id)}}">
                                         <i class="fa fa-user"></i>
                                         Profile
                                     </a>

@@ -33,7 +33,7 @@
             <div class="content-body">    <div class="row">
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="uprofile-image">
-                            <img src="{!! !empty($user->photo) ? asset($user->photo->file)  : asset('assets/images/avatar2.png') !!}" class="img-responsive">
+                            <img src="{{asset($user->photo->file)}}" class="img-responsive">
                         </div>
                         <div class="uprofile-name">
                             <h3>

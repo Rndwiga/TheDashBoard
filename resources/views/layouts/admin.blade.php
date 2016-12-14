@@ -69,8 +69,8 @@
 
                         <div class="profile-image col-md-4 col-sm-4 col-xs-4">
                           @if(!empty($user))
-                            <a href="{{ action('UserController@show', Auth::user()->id) }}">
-                                <img src="{{ asset($user->userProfile->profile_picture)}}" class="img-responsive img-circle">
+                            <a href="{{route('admin.users.show', Auth::user()->id)}}">
+                                <img src="{{ asset($user->photo->file)}}" class="img-responsive img-circle">
                             </a>
                           @endif
                         </div>
@@ -78,7 +78,7 @@
                         <div class="profile-details col-md-8 col-sm-8 col-xs-8">
 
                             <h3>
-                                <a href="{{ action('UserController@show', Auth::user()->id) }}">{{ Auth::user()->name }}</a>
+                                <a href="{{route('admin.users.show', Auth::user()->id)}}">{{ Auth::user()->name }}</a>
 
                                 <!-- Available statuses: online, idle, busy, away and offline -->
                                 <span class="profile-status online"></span>

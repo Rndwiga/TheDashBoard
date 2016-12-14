@@ -71,7 +71,7 @@
                       						@foreach($users as $user)
                       	            <tr>
                       	                <td>{{$user->id}}</td>
-                      	                <td><img height="50px" src="{!! !empty($user->photo) ? asset($user->photo->file)  : asset('assets/images/avatar2.png') !!}" alt=""></td>
+                      	                <td><img height="50px" src="{{asset($user->photo->file)}}" alt=""></td>
                       	                <td><a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a></td>
                       	                <td>{{$user->email}}</td>
                       	                <td>{{$user->role->name}}</td>
