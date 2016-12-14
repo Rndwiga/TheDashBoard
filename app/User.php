@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'gender', 'password',
+        'name', 'email', 'password', 'is_active' , 'role_id', 'photo_id', 'username',
     ];
 
     /**
@@ -26,42 +26,42 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function role()
+    {
+      return $this->belongsTo('App\Role');
+    }
+    public function photo()
+    {
+      return $this->belongsTo('App\Photo');
+    }
 
-      public function userProfile()
+    public function isAdmin()
+    {
+      if($this->role->name == 'administrator' && $this->is_active == 1)
       {
-        //each user has a single profile
-          return $this->hasOne('App\UserProfile');
+        return true;
       }
-      public function post()
-      {
-        //a user can have many/multiple posts
-        return $this->hasMany('App\Post', 'author_id');
-      }
-      public function comment()
-      {
-        //a user can have may comments
-        return $this->hasMany('App\Comment', 'from_user');
-      }
-      public function can_post()
-      {
-        //setting role that can create posts
-        $role = $this->role;
-        if($role == 'author' || $role == 'admin')
-          {
-            return true;
-          } else {
-            return false;
-          }
-      }
-      public function is_admin()
-      {
-        //checking if the user is an admin
-        $role = $this->role;
-        if($role == 'admin')
-          {
-            return true;
-          }else {
-            return false;
-          }
-      }
+      return false;
+    }
+    public function canPost()
+    {
+      //setting role that can create posts
+      $role = $this->role;
+      if($role == 'author' || $role == 'admin')
+        {
+          return true;
+        } else {
+          return false;
+        }
+    }
+    public function userProfile()
+    {
+      //each user has a single profile
+        return $this->hasOne('App\UserProfile');
+    }
+
+    public function posts()
+    {
+      return $this->hasMany('App\Post');
+    }
 }

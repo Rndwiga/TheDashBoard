@@ -14,12 +14,12 @@ class frontendController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Write a function that checks if table has data, if not, fail silently and inform admin
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-      $posts = Post::where('active',1)->orderBy('created_at','desc')->take(2)->get();
+      //$posts = Post::where('active',1)->orderBy('created_at','desc')->take(2)->get();
       return view('frontend/v2/includes/index', compact('posts')); //index
     }
 

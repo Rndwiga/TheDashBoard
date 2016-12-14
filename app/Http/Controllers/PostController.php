@@ -24,7 +24,7 @@ class PostController extends Controller
       $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts');
         //return view('posts.show', compact('posts', 'post', 'css'));
       //  return $posts;
-        return view('posts.index', compact('posts', 'css'));
+        return view('portal.posts.index', compact('posts', 'css'));
     }
 
     /**
@@ -40,7 +40,7 @@ class PostController extends Controller
         if(($request->user()->can_post()))
         {
           $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'createPosts' => 'btn btn-primary');
-          return view('posts.create', compact('css'));
+          return view('portal.posts.create', compact('css'));
 
         }else {
           return redirect('/')->withErrors('Sorry you dont have the rights to create posts');
@@ -145,7 +145,7 @@ class PostController extends Controller
         $comments = $post->comment; //fetch post comments
         $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts');
 
-        return view('posts.show', compact('post', 'comments', 'css'));
+        return view('portal.posts.show', compact('post', 'comments', 'css'));
 
     }
 
@@ -161,7 +161,7 @@ class PostController extends Controller
         //check if post has been fetched and if user is the author or admin
         if($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
         {
-          return view('posts.edit', compact('post'));
+          return view('portal.posts.edit', compact('post'));
         }
     }
 
@@ -242,7 +242,7 @@ class PostController extends Controller
       $posts = Post::where('author_id', Auth::id())->where('active',1)->orderBy('created_at','desc')->get();
     //  return $posts;
       $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'published'=> 'Published Posts', 'publishedPosts' => 'btn btn-primary');
-        return view('posts.published', compact('css', 'posts'));
+        return view('portal.posts.published', compact('css', 'posts'));
     }
     public function userDrafts(Request $request)
     {
@@ -252,7 +252,7 @@ class PostController extends Controller
       $posts = Post::where('author_id', Auth::id())->where('active',0)->orderBy('created_at','desc')->get();
     //  return $posts;
       $css = (object)array('openDropdown' => 'open', 'linkActive' => 'active', 'posts'=> 'posts', 'published'=> 'Published Posts', 'draftPosts' => 'btn btn-primary');
-        return view('posts.draft', compact('css', 'posts'));
+        return view('portal.posts.draft', compact('css', 'posts'));
     }
     public function uploadImage(Request $request)
     {

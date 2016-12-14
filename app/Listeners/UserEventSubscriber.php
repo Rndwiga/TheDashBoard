@@ -5,16 +5,10 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Notifications\newUserLogin;
-use App\Notifications\userAccountActivation;
-use App\Sheria\UserActivationLibrary;
 use Illuminate\Support\Facades\Session;
-use App\User;
 
 class UserEventSubscriber
 {
-  private $userActivationLibrary;
-  protected $resendAfter = 24;
   public function __construct()
   {
   }
@@ -44,9 +38,7 @@ class UserEventSubscriber
   /**
    * Handle user registration events.
    */
-  public function onUserRegistered($event) {
-    $this->sendActivationMail($event);
-  }
+  public function onUserRegistered($event) {}
 
   /**
    * Handle user Lockout events.

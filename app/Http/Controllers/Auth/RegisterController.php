@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Sheria\UserActivationLibrary;
-use App\Notifications\userAccountActivation;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -54,7 +53,6 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => 'required|max:255',
             'name' => 'required|max:255',
-            'gender' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -71,7 +69,6 @@ class RegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'name' => $data['name'],
-            'gender' => $data['gender'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -85,7 +82,7 @@ class RegisterController extends Controller
      */
   public function register(Request $request)
     {
-        $validator = $this->validator($request->all());
+        $this->validator($request->all())->validate();
         $user = $this->create($request->all());
         $this->userActivationLibrary->sendActivationMail($user);
         return redirect('/login')->with('activationStatus', true);

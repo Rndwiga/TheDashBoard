@@ -23,7 +23,8 @@ class UserController extends Controller
     public function index()
     {
       $users = User::all();
-      return view('users.index', compact('users'));
+      //return $users;
+      return view('portal.users.index', compact('users'));
 
     }
 
@@ -36,7 +37,7 @@ class UserController extends Controller
     {
         //
         $user = User::with(['userProfile'])->find(Auth::user()->id);
-        return view('users.create')->with('user', $user);
+        return view('portal.users.create')->with('user', $user);
 
     }
 
@@ -85,18 +86,7 @@ class UserController extends Controller
     {
       //  $user = User::find($id)->userProfile;
         $user = User::with(['userProfile'])->find($id);
-          $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
-            if($isProfileSet == NULL)
-            {
-                $user = User::find(Auth::user()->id); //fetching basic user info
-                $user->userProfile = (object)array('profile_picture' => asset('data/profile/avatar-2.png ')); //setting default user profile
-                return view('users.show', compact('user'));
-            }else {
-                return view('users.show', compact('user'));
-            }
-
-
-      //  return view('users.show', compact('user'));
+          return view('portal.users.show', compact('user'));
     }
 
     /**
@@ -126,9 +116,9 @@ class UserController extends Controller
                     'bio' => '',
 
                   ); //setting default user profile
-          return view('users.edit')->with('user', $user);
+          return view('portal.users.edit')->with('user', $user);
       }else {
-          return view('users.edit')->with('user', $user);
+          return view('portal.users.edit')->with('user', $user);
       }
     }
 

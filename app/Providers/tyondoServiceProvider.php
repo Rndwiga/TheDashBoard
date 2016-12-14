@@ -21,7 +21,7 @@ class tyondoServiceProvider extends ServiceProvider
     public function boot()
     {
       // Using Closure based composers...
-      View::composer('layouts.app', function ($view) {
+      View::composer('layouts.admin', function ($view) {
         $user = User::with(['userProfile'])->find(Auth::user()->id);
           $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
             if($isProfileSet == NULL)
