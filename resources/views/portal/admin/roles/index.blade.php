@@ -13,7 +13,7 @@
           <div class="page-title">
 
               <div class="pull-left">
-                  <h1 class="title">Users</h1>
+                  <h1 class="title">Roles</h1>
               </div>
 
               <div class="pull-right hidden-xs">
@@ -22,10 +22,10 @@
                           <a href="index.html"><i class="fa fa-home"></i>Home</a>
                       </li>
                       <li>
-                          <a href="blo-categories.html">Users</a>
+                          <a href="blo-categories.html">Roles</a>
                       </li>
                       <li class="active">
-                          <strong>All Users</strong>
+                          <strong>All Roles</strong>
                       </li>
                   </ol>
               </div>
@@ -37,7 +37,7 @@
       <div class="col-lg-12">
           <section class="box ">
               <header class="panel_header">
-                  <h2 class="title pull-left">All Users</h2>
+                  <h2 class="title pull-left">All Roles</h2>
                   <div class="actions panel_actions pull-right">
                       <i class="box_toggle fa fa-chevron-down"></i>
                       <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
@@ -55,32 +55,25 @@
                           <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
                               <thead>
                                   <tr>
-                                    <th>Id</th>
-                                    <th>Photo</th>
-                                    <th>User</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Created</th>
-                                    <th>Updated</th>
+                                      <th>ID</th>
+                                      <th>Category Name</th>
+                                      <th>Description</th>
+                                      <th>No. of Blogs</th>
+                                      <th>Time Created</th>
                                   </tr>
                               </thead>
-
                               <tbody>
-                                @if(isset($users))
-                      						@foreach($users as $user)
-                      	            <tr>
-                      	                <td>{{$user->id}}</td>
-                      	                <td><img height="50px" src="{!! !empty($user->photo) ? asset($user->photo->file)  : asset('assets/images/avatar2.png') !!}" alt=""></td>
-                      	                <td><a href="{{route('admin.users.show', $user->id)}}">{{$user->name}}</a></td>
-                      	                <td>{{$user->email}}</td>
-                      	                <td>{{$user->role->name}}</td>
-                      	                <td>{{$user->is_active == 1 ? 'Active' : 'Not Active' }}</td>
-                      	                <td>{{$user->created_at->diffForHumans()}}</td>
-                      	                <td>{{$user->updated_at->diffForHumans()}}</td>
-                      	            </tr>
-                      						@endforeach
-                      					@endif
+                                @if(isset($roles))
+        													@foreach($roles as $role)
+        								            <tr>
+        								                <td>{{$role->id}}</td>
+        								                <td><a href="{{route('admin.roles.edit', $role->id)}}">{{$role->name}}</a></td>
+        								                <td>{{$role->description}}</td>
+        								                <td>{{$role->updated_at->diffForHumans()}}</td>
+        								                <td>{{$role->created_at->diffForHumans()}}</td>
+        								            </tr>
+        													@endforeach
+        												@endif
                               </tbody>
                           </table>
                           <!-- ********************************************** -->

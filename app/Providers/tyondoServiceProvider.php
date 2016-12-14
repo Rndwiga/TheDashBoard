@@ -22,7 +22,9 @@ class tyondoServiceProvider extends ServiceProvider
     {
       // Using Closure based composers...
       View::composer('layouts.admin', function ($view) {
-        $user = User::with(['userProfile'])->find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
+          $view->with('user', $user);
+        /*  $user = User::with(['userProfile'])->find(Auth::user()->id);
           $isProfileSet = $user->userProfile; //check if profile table is set if not load defaults
             if($isProfileSet == NULL)
             {
@@ -33,6 +35,7 @@ class tyondoServiceProvider extends ServiceProvider
                 //return view('home')->with('user', $user);
                 $view->with('user', $user);
             }
+          */
       });
     }
 

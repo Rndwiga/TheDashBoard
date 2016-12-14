@@ -21,8 +21,7 @@ class AdminUsersController extends Controller
     public function index()
     {
       $users = User::all();
-      //return $users;
-      return view('admin.users.index', compact('users'));
+      return view('portal.admin.users.index', compact('users'));
     }
 
     /**
@@ -33,7 +32,7 @@ class AdminUsersController extends Controller
     public function create()
     {
       $roles = Role::pluck('name', 'id')->all();
-        return view('admin.users.create', compact('roles'));
+        return view('portal.admin.users.create', compact('roles'));
     }
 
     /**
@@ -73,7 +72,8 @@ class AdminUsersController extends Controller
      */
     public function show($id)
     {
-        return view('admin.users.show');
+      $user = User::findOrFail($id);
+        return view('portal.admin.users.show', compact('user'));
     }
 
     /**
@@ -86,9 +86,8 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
         $roles = Role::pluck('name', 'id')->all();
-        return view('admin.users.edit', compact('user', 'roles'));
+        return view('portal.admin.users.edit', compact('user', 'roles'));
     }
-
     /**
      * Update the specified resource in storage.
      *

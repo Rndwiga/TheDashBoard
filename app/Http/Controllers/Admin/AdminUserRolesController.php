@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Photo;
+use Illuminate\Support\Facades\Session;
+use App\Role;
 
-class AdminMediasController extends Controller
+class AdminUserRolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class AdminMediasController extends Controller
      */
     public function index()
     {
-        $photos = Photo::all();
-        return view('admin.media.index', compact('photos'));
+        $roles = Role::all();
+      return view('portal.admin.roles.index', compact('roles'));
     }
 
     /**
@@ -26,8 +27,7 @@ class AdminMediasController extends Controller
      */
     public function create()
     {
-      return view('admin.media.create');
-
+        return view('portal.admin.roles.create');
     }
 
     /**
@@ -38,10 +38,9 @@ class AdminMediasController extends Controller
      */
     public function store(Request $request)
     {
-      $file = $request->file('file');
-      $name = time() . $file->getClientOriginalName();
-      $file->move('images', $name);
-      Photo::create(['file'=>$name]);
+        Role::create($request->all());
+        Session::flash('message', 'New role created');
+        return redirect('/admin/roles/');
     }
 
     /**
@@ -63,7 +62,10 @@ class AdminMediasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $roles = Role::all();
+        return view('portal.admin.roles.edit', compact('role', 'roles'));
+        //return view('admin.categories.edit', compact('category', 'categories'));
     }
 
     /**
@@ -75,7 +77,9 @@ class AdminMediasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Role::findOrFail($id)->update($request->all());
+        Session::flash('message', 'Role Updated');
+        return redirect('admin/roles');
     }
 
     /**
@@ -86,12 +90,8 @@ class AdminMediasController extends Controller
      */
     public function destroy($id)
     {
-      $photo = Photo::findOrFail($id);
-      unlink(public_path() . $photo->file);
-      $photo->delete();
-    return redirect('/admin/media');
-
-
-
+        Role::findOrFail($id)->delete();
+        Session::flash('message', 'role deleted');
+        return redirect('admin/roles');
     }
 }

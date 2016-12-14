@@ -77,6 +77,17 @@ Route::group(['middleware' => 'auth'], function(){
       'edit' => 'admin.categories.edit',
     ]
   ]);
+  Route::resource('admin/roles', 'Admin\AdminUserRolesController', [
+    'names'=> [
+      'index' => 'admin.roles.index',
+      'create' => 'admin.roles.create',
+      'store' => 'admin.roles.store',
+      'update' => 'admin.roles.update',
+      'destroy' => 'admin.roles.destroy',
+      'show' => 'admin.roles.show',
+      'edit' => 'admin.roles.edit',
+    ]
+  ]);
   Route::resource('admin/media', 'Admin\AdminMediasController', [
     'names'=> [
       'index' => 'admin.media.index',

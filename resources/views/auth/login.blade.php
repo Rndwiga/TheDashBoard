@@ -18,7 +18,7 @@
         </p>
         <p>
             <label for="user_pass">Password<br />
-                <input type="password" name="password" id="user_pass" class="input" value="demo" size="20" /></label>
+                <input type="password" name="password" id="user_pass" class="input" value="login123" size="20" /></label>
                 @if ($errors->has('password'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password') }}</strong>

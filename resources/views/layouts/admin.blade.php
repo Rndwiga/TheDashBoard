@@ -84,7 +84,7 @@
                                 <span class="profile-status online"></span>
                             </h3>
 
-                            <p class="profile-title">{{ ucfirst(Auth::user()->role) }}</p>
+                            <p class="profile-title">{{ ucfirst(Auth::user()->role->name) }}</p>
 
                         </div>
 
@@ -157,6 +157,21 @@
                                 </li>
                                 <li>
                                     <a class="" href="{{route('admin.categories.create')}}" >Add Category</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;">
+                                <i class="fa fa-sitemap"></i>
+                                <span class="title">User Roles</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="sub-menu" >
+                                <li>
+                                    <a class="" href="{{route('admin.roles.index')}}" >All Roles</a>
+                                </li>
+                                <li>
+                                    <a class="" href="{{route('admin.roles.create')}}" >Add Roles</a>
                                 </li>
                             </ul>
                         </li>
