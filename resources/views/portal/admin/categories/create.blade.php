@@ -41,7 +41,7 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                  {!! Form::model($category, ['action' => ['Admin\AdminCategoriesController@update', $category->id], 'method' => 'PATCH', 'files' => true ]) !!}
+                    {!! Form::open(['action' => 'Admin\AdminCategoriesController@store', 'method' => 'post', 'files' => true ]) !!}
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
 
                             <div class="form-group">
@@ -51,6 +51,8 @@
                                     {{ Form::text('name', null, ['class' => 'form-control', 'placeholder'=> 'Category']) }}
                                 </div>
                             </div>
+
+
                             <div class="form-group">
                                 <label class="form-label" for="field-1">Category Slug</label>
                                 <span class="desc"></span>
@@ -67,18 +69,16 @@
                                   {{ Form::textarea('description', null, ['class' => 'form-control autogrow', 'cols' => '2']) }}
                                 </div>
                             </div>
+
                         </div>
+
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                             <div class="text-left">
-                                <button type="submit" class="btn btn-primary col-sm-4 col-sm-4">Save</button>
-                                <button type="submit" class="btn btn-default col-sm-4 col-sm-4">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn">Cancel</button>
                             </div>
-
+                        </div>
                     {!! Form::close() !!}
-                    {!! Form::open(['action' => ['Admin\AdminCategoriesController@destroy', $category->id ], 'method' => 'Delete' ]) !!}
-        							<button type="submit" class="btn btn-danger col-sm-4 col-sm-4">Delete</button>
-                    </div>
-        						{!! Form::close() !!}
                 </div>
 
 

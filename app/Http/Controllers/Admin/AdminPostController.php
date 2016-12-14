@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Pagination\Paginator;
 use App\Post;
 use App\Photo;
 use App\Category;
@@ -19,8 +21,13 @@ class AdminPostController extends Controller
      */
     public function index()
     {
+        $posts = Post::paginate(2);
+        return view('portal.admin.posts.index', compact('posts'));
+    }
+    public function managePosts()
+    {
         $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        return view('portal.admin.posts.manage', compact('posts'));
     }
 
     /**
@@ -31,7 +38,7 @@ class AdminPostController extends Controller
     public function create()
     {
       $categories = Category::pluck('name', 'id')->all();
-        return view('admin.posts.create', compact('categories'));
+        return view('portal.admin.posts.create', compact('categories'));
     }
 
     /**
@@ -82,7 +89,7 @@ class AdminPostController extends Controller
     {
         $post = Post::findOrFail($id);
         $categories = Category::pluck('name', 'id')->all();
-        return view('admin.posts.edit', compact('categories', 'post'));
+        return view('portal.admin.posts.edit', compact('categories', 'post'));
     }
 
     /**

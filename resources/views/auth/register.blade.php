@@ -36,7 +36,7 @@
                     </p>
                     <p>
                         <label for="user_pass">Password<br />
-                            <input type="password" name="password" id="user_pass" class="input" value="" size="20" /></label>
+                            <input type="password" name="password" id="user_pass" class="input" value="login123" size="20" /></label>
                             @if ($errors->has('password'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('password') }}</strong>
@@ -45,7 +45,7 @@
                     </p>
                     <p>
                         <label for="user_pass">Confirm Password<br />
-                            <input type="password" name="password_confirmation" id="user_pass1" class="input" value="" size="20" /></label>
+                            <input type="password" name="password_confirmation" id="user_pass1" class="input" value="login123" size="20" /></label>
                     </p>
                     <p class="forgetmenot">
                         <label class="icheck-label form-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" class="skin-square-orange" checked> I agree to terms to conditions</label>

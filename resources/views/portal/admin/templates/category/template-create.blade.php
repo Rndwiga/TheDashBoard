@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 @section('otherCSS')
 <link href="{{asset('assets/plugins/datepicker/css/datepicker.css')}}" rel="stylesheet" type="text/css" media="screen"/>
-<!---->
-<link href="{{asset('assets/plugins/summernote-master/summernote.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
@@ -43,7 +41,7 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                    {!! Form::open(['action' => 'Admin\AdminPostController@store', 'method' => 'post', 'files' => true ]) !!}
+                    <form action ="#" method="post">
 
                         <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
 
@@ -51,7 +49,7 @@
                                 <label class="form-label" for="field-1">Blog Title</label>
                                 <span class="desc"></span>
                                 <div class="controls">
-                                    {{ Form::text('title', null, ['class' => 'form-control']) }}
+                                    <input type="text" value="" class="form-control" id="field-1">
                                 </div>
                             </div>
 
@@ -62,18 +60,13 @@
                             <div class="form-group">
                                 <label class="form-label" for="field-5">Blog Content</label>
                                 <span class="desc"></span>
-                                {{ Form::textarea('body', null, ['class' => 'ckeditor form-control', 'id' => 'postBody']) }}
-                                <br>
+
+                                <textarea class="ckeditor" cols="80" id="editor1" name="editor1" rows="10">
+                                </textarea><br>
                             </div>
 
                             <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
-                              <div class="form-group">
-                                  <label class="form-label" for="field-6">Blog Excerpt</label>
-                                  <span class="desc"></span>
-                                  <div class="controls">
-                                    {{ Form::textarea('summary', null, ['class' => 'autogrow form-control']) }}
-                                  </div>
-                              </div>
+
                                 <div class="form-group">
                                     <label class="form-label" for="field-5">Created On</label>
                                     <span class="desc">e.g. "04/03/2015"</span>
@@ -95,7 +88,7 @@
                                     <label class="form-label" for="field-1">Featured Image</label>
                                     <span class="desc"></span>
                                     <div class="controls">
-                                        {{ Form::file('photo_id', ['class' => 'form-control']) }}
+                                        <input type="file" class="form-control" id="field-5">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -112,7 +105,13 @@
                                 <div class="form-group">
                                     <label class="form-label" for="field-5">Blog Categories</label>
                                     <span class="desc"></span>
-                                    {{ Form::select('category_id', ['' => 'Select Category'] + $categories, null, ['class' => 'form-control']) }}
+                                    <select multiple class="form-control">
+                                        <option >Photoshop</option>
+                                        <option >Logo Design</option>
+                                        <option >Branding</option>
+                                        <option>Web design</option>
+                                        <option>SEO</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="field-5">Blog Status</label>
@@ -132,17 +131,25 @@
                                         <input type="text" value="" class="form-control" id="field-1">
                                     </div>
                                 </div>
+
+
+                                <div class="form-group">
+                                    <label class="form-label" for="field-6">Blog Excerpt</label>
+                                    <span class="desc"></span>
+                                    <div class="controls">
+                                        <textarea class="form-control autogrow" cols="5" id="field-6"></textarea>
+                                    </div>
+                                </div>
                             </div>
 
 
                             <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
                                 <div class="text-left">
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="button" class="btn btn-primary">Save</button>
                                     <button type="button" class="btn">Cancel</button>
                                 </div>
                             </div>
-                    {!! Form::close() !!}
-                    @include('portal.admin.partial.formError')
+                    </form>
                 </div>
 
 
@@ -156,12 +163,5 @@
 <script src="{{asset('assets/plugins/autosize/autosize.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/plugins/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
-<!-- OTHER SCRIPTS-->
-<script src="{{asset('assets/plugins/summernote-master/summernote.min.js')}}"></script>
-<script type="text/javascript">
-		$(document).ready(function() {
-		    $('#postBody').summernote({
-			  height: 350
-			});
-</script>
+<!-- OTHER SCRIPTS
 @endsection

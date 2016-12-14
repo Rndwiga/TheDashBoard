@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class=" ">
     <head>
-        
+
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
         <title>{{ config('app.name') }}</title>
@@ -105,13 +105,16 @@
                             </a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a class="" href="{{ url('Posts') }}" >All Blogs</a>
+                                    <a class="" href="{{route('admin.posts.index')}}" >All Blogs</a>
+                                </li>
+                                <li>
+                                    <a class="" href="{{route('admin.posts.manage')}}" >Manage Blogs</a>
                                 </li>
                                 <li>
                                     <a class="" href="{{ url('Posts/userPosts') }}" >My Blogs</a>
                                 </li>
                                 <li>
-                                    <a class="" href="blo-blog-add.html" >Add Blog</a>
+                                    <a class="" href="{{route('admin.posts.create')}}" >Add Blog</a>
                                 </li>
                                 <li>
                                     <a class="" href="blo-blog-edit.html" >Edit Blog</a>
@@ -135,7 +138,7 @@
                             </a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a class="" href="blo-media.html" >All Media</a>
+                                    <a class="" href="{{route('admin.media.index')}}" >All Media</a>
                                 </li>
                                 <li>
                                     <a class="" href="blo-upload.html" >Upload</a>
@@ -150,13 +153,10 @@
                             </a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a class="" href="blo-categories.html" >All Categories</a>
+                                    <a class="" href="{{route('admin.categories.index')}}" >All Categories</a>
                                 </li>
                                 <li>
-                                    <a class="" href="blo-category-add.html" >Add Category</a>
-                                </li>
-                                <li>
-                                    <a class="" href="blo-category-edit.html" >Edit Category</a>
+                                    <a class="" href="{{route('admin.categories.create')}}" >Add Category</a>
                                 </li>
                             </ul>
                         </li>
@@ -189,10 +189,10 @@
                             </a>
                             <ul class="sub-menu" >
                                 <li>
-                                    <a class="" href="{{ url('users') }}" >All Users</a>
+                                    <a class="" href="{{route('admin.users.index')}}" >All Users</a>
                                 </li>
                                 <li>
-                                    <a class="" href="{{ url('users/create') }}" >Add User</a>
+                                    <a class="" href="{{route('admin.users.create')}}" >Add User</a>
                                 </li>
                                 <li>
                                     <a class="" href="blo-user-edit.html" >Edit User</a>

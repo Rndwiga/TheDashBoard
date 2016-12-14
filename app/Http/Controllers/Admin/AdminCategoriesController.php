@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Category;
@@ -16,8 +17,7 @@ class AdminCategoriesController extends Controller
     public function index()
     {
         $categories = Category::all();
-
-        return view('admin.categories.index', compact('categories'));
+      return view('portal.admin.categories.index', compact('categories'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AdminCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('portal.admin.categories.create');
     }
 
     /**
@@ -64,7 +64,8 @@ class AdminCategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
         $categories = Category::all();
-        return view('admin.categories.edit', compact('category', 'categories'));
+        return view('portal.admin.categories.edit', compact('category', 'categories'));
+        //return view('admin.categories.edit', compact('category', 'categories'));
     }
 
     /**
