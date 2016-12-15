@@ -18,5 +18,15 @@ class PhotoTableSeeder extends Seeder
           'created_at' => Carbon::now(),
           'updated_at' => Carbon::now(),
       ]);
+      DB::table('photos')->insert([
+          'file' => 'post1.png',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
+      ]);
+      DB::table('photos')->insert([
+          'file' => 'post2.png',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
+      ]);
     }
 }
